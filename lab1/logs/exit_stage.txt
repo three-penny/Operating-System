@@ -1,0 +1,7 @@
+
+$ cargo build --color never 
+   Compiling os v0.1.0 (/mnt/lab1/target/exit9)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.46s
+
+$ qemu-riscv64 target/riscv64gc-unknown-none-elf/debug/os
+Observed exit status: 9

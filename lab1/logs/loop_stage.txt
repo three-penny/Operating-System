@@ -1,0 +1,7 @@
+
+$ cargo build --color never 
+   Compiling os v0.1.0 (/mnt/lab1/target/loop)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.51s
+
+$ timeout 2s qemu-riscv64 target/riscv64gc-unknown-none-elf/debug/os
+Observed status: 124 (124 means timeout stopped the infinite loop)

@@ -1,0 +1,1874 @@
+
+target/riscv64gc-unknown-none-elf/debug/os:	file format elf64-littleriscv
+
+Disassembly of section .text:
+
+0000000000011a34 <_RNvMNtNtCsePS3Ti1NIB9_4core3ptr9const_ptrPu13is_aligned_toCsbF7z9a2DH2M_2os>:
+;     pub fn is_aligned_to(self, align: usize) -> bool {
+   11a34: 7139         	addi	sp, sp, -0x40
+   11a36: e42e         	sd	a1, 0x8(sp)
+   11a38: e82a         	sd	a0, 0x10(sp)
+   11a3a: ec2a         	sd	a0, 0x18(sp)
+   11a3c: f02e         	sd	a1, 0x20(sp)
+;             return intrinsics::ctpop(self);
+   11a3e: 0015d513     	srli	a0, a1, 0x1
+   11a42: 55555637     	lui	a2, 0x55555
+   11a46: 55560613     	addi	a2, a2, 0x555
+   11a4a: 02061693     	slli	a3, a2, 0x20
+   11a4e: 9636         	add	a2, a2, a3
+   11a50: 8d71         	and	a0, a0, a2
+   11a52: 8d89         	sub	a1, a1, a0
+   11a54: 33333537     	lui	a0, 0x33333
+   11a58: 33350513     	addi	a0, a0, 0x333
+   11a5c: 02051613     	slli	a2, a0, 0x20
+   11a60: 962a         	add	a2, a2, a0
+   11a62: 00c5f533     	and	a0, a1, a2
+   11a66: 8189         	srli	a1, a1, 0x2
+   11a68: 8df1         	and	a1, a1, a2
+   11a6a: 952e         	add	a0, a0, a1
+   11a6c: 00455593     	srli	a1, a0, 0x4
+   11a70: 952e         	add	a0, a0, a1
+   11a72: 0f0f15b7     	lui	a1, 0xf0f1
+   11a76: f0f58593     	addi	a1, a1, -0xf1
+   11a7a: 02059613     	slli	a2, a1, 0x20
+   11a7e: 95b2         	add	a1, a1, a2
+   11a80: 8d6d         	and	a0, a0, a1
+   11a82: 010105b7     	lui	a1, 0x1010
+   11a86: 10158593     	addi	a1, a1, 0x101
+   11a8a: 02059613     	slli	a2, a1, 0x20
+   11a8e: 95b2         	add	a1, a1, a2
+   11a90: 02b50533     	mul	a0, a0, a1
+   11a94: 9161         	srli	a0, a0, 0x38
+   11a96: d62a         	sw	a0, 0x2c(sp)
+   11a98: 5532         	lw	a0, 0x2c(sp)
+   11a9a: 4585         	li	a1, 0x1
+;         if !align.is_power_of_two() {
+   11a9c: 00b51b63     	bne	a0, a1, 0x11ab2 <.Lpcrel_hi0>
+   11aa0: a009         	j	0x11aa2 <_RNvMNtNtCsePS3Ti1NIB9_4core3ptr9const_ptrPu13is_aligned_toCsbF7z9a2DH2M_2os+0x6e>
+   11aa2: 6542         	ld	a0, 0x10(sp)
+   11aa4: 65a2         	ld	a1, 0x8(sp)
+;         self.addr() & (align - 1) == 0
+   11aa6: 15fd         	addi	a1, a1, -0x1
+   11aa8: 8d6d         	and	a0, a0, a1
+   11aaa: 00153513     	seqz	a0, a0
+;     }
+   11aae: 6121         	addi	sp, sp, 0x40
+   11ab0: 8082         	ret
+
+0000000000011ab2 <.Lpcrel_hi0>:
+;             panic!("is_aligned_to: align is not a power-of-two");
+   11ab2: ffffe517     	auipc	a0, 0xffffe
+   11ab6: 6a650513     	addi	a0, a0, 0x6a6
+   11aba: f82a         	sd	a0, 0x30(sp)
+   11abc: 02a00593     	li	a1, 0x2a
+   11ac0: fc2e         	sd	a1, 0x38(sp)
+
+0000000000011ac2 <.Lpcrel_hi1>:
+   11ac2: fffff597     	auipc	a1, 0xfffff
+   11ac6: 84658613     	addi	a2, a1, -0x7ba
+   11aca: 05500593     	li	a1, 0x55
+   11ace: 00001097     	auipc	ra, 0x1
+   11ad2: c20080e7     	jalr	-0x3e0(ra) <_RNvNtCsePS3Ti1NIB9_4core9panicking9panic_fmt>
+
+0000000000011ad6 <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods15encode_utf8_rawCsbF7z9a2DH2M_2os>:
+; pub const fn encode_utf8_raw(code: u32, dst: &mut [u8]) -> &mut [u8] {
+   11ad6: 715d         	addi	sp, sp, -0x50
+   11ad8: e486         	sd	ra, 0x48(sp)
+   11ada: e032         	sd	a2, 0x0(sp)
+   11adc: e42e         	sd	a1, 0x8(sp)
+   11ade: 86aa         	mv	a3, a0
+   11ae0: e836         	sd	a3, 0x10(sp)
+   11ae2: d22a         	sw	a0, 0x24(sp)
+   11ae4: f42e         	sd	a1, 0x28(sp)
+   11ae6: f832         	sd	a2, 0x30(sp)
+   11ae8: 08000593     	li	a1, 0x80
+;         ..MAX_ONE_B => 1,
+   11aec: 00b56863     	bltu	a0, a1, 0x11afc <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods15encode_utf8_rawCsbF7z9a2DH2M_2os+0x26>
+   11af0: a009         	j	0x11af2 <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods15encode_utf8_rawCsbF7z9a2DH2M_2os+0x1c>
+   11af2: 6542         	ld	a0, 0x10(sp)
+;         ..MAX_TWO_B => 2,
+   11af4: 00b5551b     	srliw	a0, a0, 0xb
+   11af8: c911         	beqz	a0, 0x11b0c <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods15encode_utf8_rawCsbF7z9a2DH2M_2os+0x36>
+   11afa: a021         	j	0x11b02 <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods15encode_utf8_rawCsbF7z9a2DH2M_2os+0x2c>
+   11afc: 4505         	li	a0, 0x1
+;         ..MAX_ONE_B => 1,
+   11afe: ec2a         	sd	a0, 0x18(sp)
+   11b00: a839         	j	0x11b1e <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods15encode_utf8_rawCsbF7z9a2DH2M_2os+0x48>
+   11b02: 6542         	ld	a0, 0x10(sp)
+;         ..MAX_THREE_B => 3,
+   11b04: 0105551b     	srliw	a0, a0, 0x10
+   11b08: c901         	beqz	a0, 0x11b18 <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods15encode_utf8_rawCsbF7z9a2DH2M_2os+0x42>
+   11b0a: a021         	j	0x11b12 <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods15encode_utf8_rawCsbF7z9a2DH2M_2os+0x3c>
+   11b0c: 4509         	li	a0, 0x2
+;         ..MAX_TWO_B => 2,
+   11b0e: ec2a         	sd	a0, 0x18(sp)
+   11b10: a039         	j	0x11b1e <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods15encode_utf8_rawCsbF7z9a2DH2M_2os+0x48>
+   11b12: 4511         	li	a0, 0x4
+;         _ => 4,
+   11b14: ec2a         	sd	a0, 0x18(sp)
+   11b16: a021         	j	0x11b1e <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods15encode_utf8_rawCsbF7z9a2DH2M_2os+0x48>
+   11b18: 450d         	li	a0, 0x3
+;         ..MAX_THREE_B => 3,
+   11b1a: ec2a         	sd	a0, 0x18(sp)
+   11b1c: a009         	j	0x11b1e <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods15encode_utf8_rawCsbF7z9a2DH2M_2os+0x48>
+   11b1e: 6502         	ld	a0, 0x0(sp)
+;     if dst.len() < len {
+   11b20: fc2a         	sd	a0, 0x38(sp)
+   11b22: 65e2         	ld	a1, 0x18(sp)
+   11b24: 00b56d63     	bltu	a0, a1, 0x11b3e <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods15encode_utf8_rawCsbF7z9a2DH2M_2os+0x68>
+   11b28: a009         	j	0x11b2a <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods15encode_utf8_rawCsbF7z9a2DH2M_2os+0x54>
+   11b2a: 65a2         	ld	a1, 0x8(sp)
+   11b2c: 6542         	ld	a0, 0x10(sp)
+;     unsafe { encode_utf8_raw_unchecked(code, dst.as_mut_ptr()) };
+   11b2e: 2501         	sext.w	a0, a0
+   11b30: 00000097     	auipc	ra, 0x0
+   11b34: 04a080e7     	jalr	0x4a(ra) <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods25encode_utf8_raw_uncheckedCsbF7z9a2DH2M_2os>
+   11b38: 6522         	ld	a0, 0x8(sp)
+;         self as *mut [T] as *mut T
+   11b3a: e0aa         	sd	a0, 0x40(sp)
+;             if ::core::ub_checks::$kind() {
+   11b3c: a829         	j	0x11b56 <.Lpcrel_hi0+0x10>
+   11b3e: 6602         	ld	a2, 0x0(sp)
+   11b40: 6542         	ld	a0, 0x10(sp)
+;         const_eval_select(($($val,)*), compiletime, runtime)
+   11b42: 65e2         	ld	a1, 0x18(sp)
+   11b44: 2501         	sext.w	a0, a0
+
+0000000000011b46 <.Lpcrel_hi0>:
+   11b46: ffffe697     	auipc	a3, 0xffffe
+   11b4a: 7f268693     	addi	a3, a3, 0x7f2
+   11b4e: 00000097     	auipc	ra, 0x0
+   11b52: 12a080e7     	jalr	0x12a(ra) <_RNvNvNvNtNtCsePS3Ti1NIB9_4core4char7methods15encode_utf8_raw8do_panic7runtimeCsbF7z9a2DH2M_2os>
+   11b56: 6522         	ld	a0, 0x8(sp)
+;                 precondition_check($($arg,)*);
+   11b58: 66e2         	ld	a3, 0x18(sp)
+
+0000000000011b5a <.Lpcrel_hi1>:
+   11b5a: ffffe597     	auipc	a1, 0xffffe
+   11b5e: 7c658713     	addi	a4, a1, 0x7c6
+   11b62: 4605         	li	a2, 0x1
+   11b64: 85b2         	mv	a1, a2
+   11b66: 00000097     	auipc	ra, 0x0
+   11b6a: 49e080e7     	jalr	0x49e(ra) <_RNvNvNtNtCsePS3Ti1NIB9_4core5slice3raw18from_raw_parts_mut18precondition_checkCsbF7z9a2DH2M_2os>
+;             if ::core::ub_checks::$kind() {
+   11b6e: a009         	j	0x11b70 <.Lpcrel_hi1+0x16>
+   11b70: 6522         	ld	a0, 0x8(sp)
+;     aggregate_raw_ptr(data_pointer, metadata)
+   11b72: 65e2         	ld	a1, 0x18(sp)
+; }
+   11b74: 60a6         	ld	ra, 0x48(sp)
+   11b76: 6161         	addi	sp, sp, 0x50
+   11b78: 8082         	ret
+
+0000000000011b7a <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods25encode_utf8_raw_uncheckedCsbF7z9a2DH2M_2os>:
+; pub const unsafe fn encode_utf8_raw_unchecked(code: u32, dst: *mut u8) {
+   11b7a: 7119         	addi	sp, sp, -0x80
+   11b7c: f02e         	sd	a1, 0x20(sp)
+   11b7e: 862a         	mv	a2, a0
+   11b80: f432         	sd	a2, 0x28(sp)
+   11b82: de2a         	sw	a0, 0x3c(sp)
+   11b84: e0ae         	sd	a1, 0x40(sp)
+   11b86: 4585         	li	a1, 0x1
+;     pub const unsafe fn add(self, count: usize) -> Self
+   11b88: e4ae         	sd	a1, 0x48(sp)
+   11b8a: e8ae         	sd	a1, 0x50(sp)
+   11b8c: ecae         	sd	a1, 0x58(sp)
+   11b8e: 4589         	li	a1, 0x2
+   11b90: f0ae         	sd	a1, 0x60(sp)
+   11b92: f4ae         	sd	a1, 0x68(sp)
+   11b94: 458d         	li	a1, 0x3
+   11b96: f8ae         	sd	a1, 0x70(sp)
+   11b98: 08000593     	li	a1, 0x80
+;         ..MAX_ONE_B => 1,
+   11b9c: 00b56863     	bltu	a0, a1, 0x11bac <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods25encode_utf8_raw_uncheckedCsbF7z9a2DH2M_2os+0x32>
+   11ba0: a009         	j	0x11ba2 <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods25encode_utf8_raw_uncheckedCsbF7z9a2DH2M_2os+0x28>
+   11ba2: 7522         	ld	a0, 0x28(sp)
+;         ..MAX_TWO_B => 2,
+   11ba4: 00b5551b     	srliw	a0, a0, 0xb
+   11ba8: cd11         	beqz	a0, 0x11bc4 <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods25encode_utf8_raw_uncheckedCsbF7z9a2DH2M_2os+0x4a>
+   11baa: a801         	j	0x11bba <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods25encode_utf8_raw_uncheckedCsbF7z9a2DH2M_2os+0x40>
+   11bac: 7522         	ld	a0, 0x28(sp)
+   11bae: 7582         	ld	a1, 0x20(sp)
+   11bb0: 4605         	li	a2, 0x1
+;         ..MAX_ONE_B => 1,
+   11bb2: f832         	sd	a2, 0x30(sp)
+;             *dst = code as u8;
+   11bb4: 00a58023     	sb	a0, 0x0(a1)
+   11bb8: a86d         	j	0x11c72 <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods25encode_utf8_raw_uncheckedCsbF7z9a2DH2M_2os+0xf8>
+   11bba: 7522         	ld	a0, 0x28(sp)
+;         ..MAX_THREE_B => 3,
+   11bbc: 0105551b     	srliw	a0, a0, 0x10
+   11bc0: c901         	beqz	a0, 0x11bd0 <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods25encode_utf8_raw_uncheckedCsbF7z9a2DH2M_2os+0x56>
+   11bc2: a021         	j	0x11bca <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods25encode_utf8_raw_uncheckedCsbF7z9a2DH2M_2os+0x50>
+   11bc4: 4509         	li	a0, 0x2
+;         ..MAX_TWO_B => 2,
+   11bc6: f82a         	sd	a0, 0x30(sp)
+   11bc8: a039         	j	0x11bd6 <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods25encode_utf8_raw_uncheckedCsbF7z9a2DH2M_2os+0x5c>
+   11bca: 4511         	li	a0, 0x4
+;         _ => 4,
+   11bcc: f82a         	sd	a0, 0x30(sp)
+   11bce: a021         	j	0x11bd6 <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods25encode_utf8_raw_uncheckedCsbF7z9a2DH2M_2os+0x5c>
+   11bd0: 450d         	li	a0, 0x3
+;         ..MAX_THREE_B => 3,
+   11bd2: f82a         	sd	a0, 0x30(sp)
+   11bd4: a009         	j	0x11bd6 <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods25encode_utf8_raw_uncheckedCsbF7z9a2DH2M_2os+0x5c>
+   11bd6: 7522         	ld	a0, 0x28(sp)
+;         let last1 = (code >> 0 & 0x3F) as u8 | TAG_CONT;
+   11bd8: 03f57593     	andi	a1, a0, 0x3f
+   11bdc: f805859b     	addiw	a1, a1, -0x80
+   11be0: e02e         	sd	a1, 0x0(sp)
+   11be2: 06b10e23     	sb	a1, 0x7c(sp)
+;         let last2 = (code >> 6 & 0x3F) as u8 | TAG_CONT;
+   11be6: 03451593     	slli	a1, a0, 0x34
+   11bea: 91e9         	srli	a1, a1, 0x3a
+   11bec: f805859b     	addiw	a1, a1, -0x80
+   11bf0: e42e         	sd	a1, 0x8(sp)
+   11bf2: 06b10ea3     	sb	a1, 0x7d(sp)
+;         let last3 = (code >> 12 & 0x3F) as u8 | TAG_CONT;
+   11bf6: 02e51593     	slli	a1, a0, 0x2e
+   11bfa: 91e9         	srli	a1, a1, 0x3a
+   11bfc: f805859b     	addiw	a1, a1, -0x80
+   11c00: e82e         	sd	a1, 0x10(sp)
+   11c02: 06b10f23     	sb	a1, 0x7e(sp)
+;         let last4 = (code >> 18 & 0x3F) as u8 | TAG_FOUR_B;
+   11c06: 8149         	srli	a0, a0, 0x12
+   11c08: ff056513     	ori	a0, a0, -0x10
+   11c0c: ec2a         	sd	a0, 0x18(sp)
+   11c0e: 06a10fa3     	sb	a0, 0x7f(sp)
+;         if len == 2 {
+   11c12: 7542         	ld	a0, 0x30(sp)
+   11c14: 4589         	li	a1, 0x2
+   11c16: 00b51d63     	bne	a0, a1, 0x11c30 <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods25encode_utf8_raw_uncheckedCsbF7z9a2DH2M_2os+0xb6>
+   11c1a: a009         	j	0x11c1c <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods25encode_utf8_raw_uncheckedCsbF7z9a2DH2M_2os+0xa2>
+   11c1c: 6502         	ld	a0, 0x0(sp)
+   11c1e: 7582         	ld	a1, 0x20(sp)
+   11c20: 6622         	ld	a2, 0x8(sp)
+;             *dst = last2 | TAG_TWO_B;
+   11c22: 0c066613     	ori	a2, a2, 0xc0
+   11c26: 00c58023     	sb	a2, 0x0(a1)
+;             *dst.add(1) = last1;
+   11c2a: 00a580a3     	sb	a0, 0x1(a1)
+   11c2e: a031         	j	0x11c3a <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods25encode_utf8_raw_uncheckedCsbF7z9a2DH2M_2os+0xc0>
+;         if len == 3 {
+   11c30: 7542         	ld	a0, 0x30(sp)
+   11c32: 458d         	li	a1, 0x3
+   11c34: 00b50463     	beq	a0, a1, 0x11c3c <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods25encode_utf8_raw_uncheckedCsbF7z9a2DH2M_2os+0xc2>
+   11c38: a839         	j	0x11c56 <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods25encode_utf8_raw_uncheckedCsbF7z9a2DH2M_2os+0xdc>
+   11c3a: a825         	j	0x11c72 <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods25encode_utf8_raw_uncheckedCsbF7z9a2DH2M_2os+0xf8>
+   11c3c: 6502         	ld	a0, 0x0(sp)
+   11c3e: 7582         	ld	a1, 0x20(sp)
+   11c40: 6622         	ld	a2, 0x8(sp)
+   11c42: 66c2         	ld	a3, 0x10(sp)
+;             *dst = last3 | TAG_THREE_B;
+   11c44: 0e06e693     	ori	a3, a3, 0xe0
+   11c48: 00d58023     	sb	a3, 0x0(a1)
+;             *dst.add(1) = last2;
+   11c4c: 00c580a3     	sb	a2, 0x1(a1)
+;             *dst.add(2) = last1;
+   11c50: 00a58123     	sb	a0, 0x2(a1)
+   11c54: b7dd         	j	0x11c3a <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods25encode_utf8_raw_uncheckedCsbF7z9a2DH2M_2os+0xc0>
+   11c56: 6502         	ld	a0, 0x0(sp)
+   11c58: 7582         	ld	a1, 0x20(sp)
+   11c5a: 6622         	ld	a2, 0x8(sp)
+   11c5c: 66c2         	ld	a3, 0x10(sp)
+   11c5e: 6762         	ld	a4, 0x18(sp)
+;         *dst = last4;
+   11c60: 00e58023     	sb	a4, 0x0(a1)
+;         *dst.add(1) = last3;
+   11c64: 00d580a3     	sb	a3, 0x1(a1)
+;         *dst.add(2) = last2;
+   11c68: 00c58123     	sb	a2, 0x2(a1)
+;         *dst.add(3) = last1;
+   11c6c: 00a581a3     	sb	a0, 0x3(a1)
+; }
+   11c70: a011         	j	0x11c74 <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods25encode_utf8_raw_uncheckedCsbF7z9a2DH2M_2os+0xfa>
+   11c72: a009         	j	0x11c74 <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods25encode_utf8_raw_uncheckedCsbF7z9a2DH2M_2os+0xfa>
+   11c74: 6109         	addi	sp, sp, 0x80
+   11c76: 8082         	ret
+
+0000000000011c78 <_RNvNvNvNtNtCsePS3Ti1NIB9_4core4char7methods15encode_utf8_raw8do_panic7runtimeCsbF7z9a2DH2M_2os>:
+;         fn runtime$(<$($binders)*>)?($($arg: $ty),*) $( -> $ret )? {
+   11c78: 7115         	addi	sp, sp, -0xe0
+   11c7a: e036         	sd	a3, 0x0(sp)
+   11c7c: 86b2         	mv	a3, a2
+   11c7e: 6602         	ld	a2, 0x0(sp)
+   11c80: e436         	sd	a3, 0x8(sp)
+   11c82: 86aa         	mv	a3, a0
+   11c84: 6522         	ld	a0, 0x8(sp)
+   11c86: ca36         	sw	a3, 0x14(sp)
+   11c88: ec2e         	sd	a1, 0x18(sp)
+   11c8a: f02a         	sd	a0, 0x20(sp)
+
+0000000000011c8c <.Lpcrel_hi2>:
+;         template: &'a [u8; N],
+   11c8c: ffffe517     	auipc	a0, 0xffffe
+   11c90: 6c450513     	addi	a0, a0, 0x6c4
+   11c94: fd2a         	sd	a0, 0xb8(sp)
+   11c96: 082c         	addi	a1, sp, 0x18
+;                     $crate::panic!($runtime_msg)
+   11c98: e1ae         	sd	a1, 0xc0(sp)
+   11c9a: 0858         	addi	a4, sp, 0x14
+   11c9c: e5ba         	sd	a4, 0xc8(sp)
+   11c9e: 1014         	addi	a3, sp, 0x20
+   11ca0: e9b6         	sd	a3, 0xd0(sp)
+;             ty: ArgumentType::Placeholder {
+   11ca2: e52e         	sd	a1, 0x88(sp)
+
+0000000000011ca4 <.Lpcrel_hi3>:
+   11ca4: 00001597     	auipc	a1, 0x1
+   11ca8: c7e58593     	addi	a1, a1, -0x382
+   11cac: e92e         	sd	a1, 0x90(sp)
+;         Argument {
+   11cae: 67ca         	ld	a5, 0x90(sp)
+   11cb0: f0be         	sd	a5, 0x60(sp)
+   11cb2: 67aa         	ld	a5, 0x88(sp)
+   11cb4: ecbe         	sd	a5, 0x58(sp)
+;             ty: ArgumentType::Placeholder {
+   11cb6: ed3a         	sd	a4, 0x98(sp)
+
+0000000000011cb8 <.Lpcrel_hi4>:
+   11cb8: 00001717     	auipc	a4, 0x1
+   11cbc: da670713     	addi	a4, a4, -0x25a
+   11cc0: f13a         	sd	a4, 0xa0(sp)
+;         Argument {
+   11cc2: 770a         	ld	a4, 0xa0(sp)
+   11cc4: f8ba         	sd	a4, 0x70(sp)
+   11cc6: 676a         	ld	a4, 0x98(sp)
+   11cc8: f4ba         	sd	a4, 0x68(sp)
+;             ty: ArgumentType::Placeholder {
+   11cca: f536         	sd	a3, 0xa8(sp)
+   11ccc: f92e         	sd	a1, 0xb0(sp)
+;         Argument {
+   11cce: 75ca         	ld	a1, 0xb0(sp)
+   11cd0: e12e         	sd	a1, 0x80(sp)
+   11cd2: 75aa         	ld	a1, 0xa8(sp)
+   11cd4: fcae         	sd	a1, 0x78(sp)
+;                     $crate::panic!($runtime_msg)
+   11cd6: 7586         	ld	a1, 0x60(sp)
+   11cd8: f82e         	sd	a1, 0x30(sp)
+   11cda: 65e6         	ld	a1, 0x58(sp)
+   11cdc: f42e         	sd	a1, 0x28(sp)
+   11cde: 75c6         	ld	a1, 0x70(sp)
+   11ce0: e0ae         	sd	a1, 0x40(sp)
+   11ce2: 75a6         	ld	a1, 0x68(sp)
+   11ce4: fc2e         	sd	a1, 0x38(sp)
+   11ce6: 658a         	ld	a1, 0x80(sp)
+   11ce8: e8ae         	sd	a1, 0x50(sp)
+   11cea: 75e6         	ld	a1, 0x78(sp)
+   11cec: e4ae         	sd	a1, 0x48(sp)
+   11cee: 102c         	addi	a1, sp, 0x28
+   11cf0: edae         	sd	a1, 0xd8(sp)
+   11cf2: 00001097     	auipc	ra, 0x1
+   11cf6: 9fc080e7     	jalr	-0x604(ra) <_RNvNtCsePS3Ti1NIB9_4core9panicking9panic_fmt>
+
+0000000000011cfa <_RNvCsbF7z9a2DH2M_2os5print>:
+; fn print(args: fmt::Arguments<'_>) {
+   11cfa: 7179         	addi	sp, sp, -0x30
+   11cfc: f406         	sd	ra, 0x28(sp)
+   11cfe: 862e         	mv	a2, a1
+   11d00: 85aa         	mv	a1, a0
+   11d02: e82e         	sd	a1, 0x10(sp)
+   11d04: ec32         	sd	a2, 0x18(sp)
+   11d06: 00f10513     	addi	a0, sp, 0xf
+;     Stdout.write_fmt(args).unwrap();
+   11d0a: 00000097     	auipc	ra, 0x0
+   11d0e: 25e080e7     	jalr	0x25e(ra) <_RNvYNtCsbF7z9a2DH2M_2os6StdoutNtNtCsePS3Ti1NIB9_4core3fmt5Write9write_fmtB4_>
+   11d12: 02a10323     	sb	a0, 0x26(sp)
+;         match self {
+   11d16: 02614503     	lbu	a0, 0x26(sp)
+   11d1a: 8905         	andi	a0, a0, 0x1
+   11d1c: c515         	beqz	a0, 0x11d48 <.Lpcrel_hi2+0x18>
+   11d1e: a009         	j	0x11d20 <.Lpcrel_hi0>
+
+0000000000011d20 <.Lpcrel_hi0>:
+;             Err(e) => unwrap_failed("called `Result::unwrap()` on an `Err` value", &e),
+   11d20: ffffe517     	auipc	a0, 0xffffe
+   11d24: 6b050513     	addi	a0, a0, 0x6b0
+
+0000000000011d28 <.Lpcrel_hi1>:
+   11d28: ffffe597     	auipc	a1, 0xffffe
+   11d2c: 68858693     	addi	a3, a1, 0x688
+
+0000000000011d30 <.Lpcrel_hi2>:
+   11d30: ffffe597     	auipc	a1, 0xffffe
+   11d34: 66858713     	addi	a4, a1, 0x668
+   11d38: 02b00593     	li	a1, 0x2b
+   11d3c: 02710613     	addi	a2, sp, 0x27
+   11d40: 00001097     	auipc	ra, 0x1
+   11d44: 928080e7     	jalr	-0x6d8(ra) <_RNvNtCsePS3Ti1NIB9_4core6result13unwrap_failed>
+; }
+   11d48: 70a2         	ld	ra, 0x28(sp)
+   11d4a: 6145         	addi	sp, sp, 0x30
+   11d4c: 8082         	ret
+
+0000000000011d4e <_RNvCsbF7z9a2DH2M_2os7syscall>:
+; fn syscall(id: usize, args: [usize; 3]) -> isize {
+   11d4e: 1141         	addi	sp, sp, -0x10
+   11d50: 862e         	mv	a2, a1
+   11d52: 88aa         	mv	a7, a0
+   11d54: e446         	sd	a7, 0x8(sp)
+;             inlateout("a0") args[0] => ret,
+   11d56: 6208         	ld	a0, 0x0(a2)
+;             in("a1") args[1],
+   11d58: 660c         	ld	a1, 0x8(a2)
+;             in("a2") args[2],
+   11d5a: 6a10         	ld	a2, 0x10(a2)
+;         asm!(
+   11d5c: 00000073     	ecall
+   11d60: e02a         	sd	a0, 0x0(sp)
+;     ret
+   11d62: 6502         	ld	a0, 0x0(sp)
+; }
+   11d64: 0141         	addi	sp, sp, 0x10
+   11d66: 8082         	ret
+
+0000000000011d68 <_RNvCsbF7z9a2DH2M_2os8sys_exit>:
+; fn sys_exit(status: i32) -> isize {
+   11d68: 7179         	addi	sp, sp, -0x30
+   11d6a: f406         	sd	ra, 0x28(sp)
+   11d6c: d22a         	sw	a0, 0x24(sp)
+;     syscall(SYSCALL_EXIT, [status as usize, 0, 0])
+   11d6e: e42a         	sd	a0, 0x8(sp)
+   11d70: 4501         	li	a0, 0x0
+   11d72: e82a         	sd	a0, 0x10(sp)
+   11d74: ec2a         	sd	a0, 0x18(sp)
+   11d76: 05d00513     	li	a0, 0x5d
+   11d7a: 002c         	addi	a1, sp, 0x8
+   11d7c: 00000097     	auipc	ra, 0x0
+   11d80: fd2080e7     	jalr	-0x2e(ra) <_RNvCsbF7z9a2DH2M_2os7syscall>
+; }
+   11d84: 70a2         	ld	ra, 0x28(sp)
+   11d86: 6145         	addi	sp, sp, 0x30
+   11d88: 8082         	ret
+
+0000000000011d8a <_RNvCsbF7z9a2DH2M_2os9sys_write>:
+; fn sys_write(fd: usize, buffer: &[u8]) -> isize {
+   11d8a: 715d         	addi	sp, sp, -0x50
+   11d8c: e486         	sd	ra, 0x48(sp)
+   11d8e: f02a         	sd	a0, 0x20(sp)
+   11d90: f42e         	sd	a1, 0x28(sp)
+   11d92: f832         	sd	a2, 0x30(sp)
+   11d94: fc2e         	sd	a1, 0x38(sp)
+   11d96: e0b2         	sd	a2, 0x40(sp)
+;     syscall(SYSCALL_WRITE, [fd, buffer.as_ptr() as usize, buffer.len()])
+   11d98: e42a         	sd	a0, 0x8(sp)
+   11d9a: e82e         	sd	a1, 0x10(sp)
+   11d9c: ec32         	sd	a2, 0x18(sp)
+   11d9e: 04000513     	li	a0, 0x40
+   11da2: 002c         	addi	a1, sp, 0x8
+   11da4: 00000097     	auipc	ra, 0x0
+   11da8: faa080e7     	jalr	-0x56(ra) <_RNvCsbF7z9a2DH2M_2os7syscall>
+; }
+   11dac: 60a6         	ld	ra, 0x48(sp)
+   11dae: 6161         	addi	sp, sp, 0x50
+   11db0: 8082         	ret
+
+0000000000011db2 <_RNvCse9kD1uviPly_7___rustc17rust_begin_unwind>:
+; fn panic(_info: &PanicInfo) -> ! {
+   11db2: 1141         	addi	sp, sp, -0x10
+   11db4: e42a         	sd	a0, 0x8(sp)
+;     loop {}
+   11db6: a009         	j	0x11db8 <_RNvCse9kD1uviPly_7___rustc17rust_begin_unwind+0x6>
+   11db8: a001         	j	0x11db8 <_RNvCse9kD1uviPly_7___rustc17rust_begin_unwind+0x6>
+
+0000000000011dba <_RNvXCsbF7z9a2DH2M_2osNtB2_6StdoutNtNtCsePS3Ti1NIB9_4core3fmt5Write9write_str>:
+;     fn write_str(&mut self, s: &str) -> fmt::Result {
+   11dba: 7179         	addi	sp, sp, -0x30
+   11dbc: f406         	sd	ra, 0x28(sp)
+   11dbe: e02a         	sd	a0, 0x0(sp)
+   11dc0: e42e         	sd	a1, 0x8(sp)
+   11dc2: e832         	sd	a2, 0x10(sp)
+   11dc4: ec2e         	sd	a1, 0x18(sp)
+   11dc6: f032         	sd	a2, 0x20(sp)
+   11dc8: 4505         	li	a0, 0x1
+;         let _ = sys_write(1, s.as_bytes());
+   11dca: 00000097     	auipc	ra, 0x0
+   11dce: fc0080e7     	jalr	-0x40(ra) <_RNvCsbF7z9a2DH2M_2os9sys_write>
+   11dd2: 4501         	li	a0, 0x0
+;     }
+   11dd4: 70a2         	ld	ra, 0x28(sp)
+   11dd6: 6145         	addi	sp, sp, 0x30
+   11dd8: 8082         	ret
+
+0000000000011dda <_start>:
+; extern "C" fn _start() -> ! {
+   11dda: 1141         	addi	sp, sp, -0x10
+   11ddc: e406         	sd	ra, 0x8(sp)
+
+0000000000011dde <.Lpcrel_hi3>:
+;         $crate::print(format_args!($($arg)*))
+   11dde: ffffe517     	auipc	a0, 0xffffe
+   11de2: 61d50513     	addi	a0, a0, 0x61d
+   11de6: 45b9         	li	a1, 0xe
+   11de8: 00000097     	auipc	ra, 0x0
+   11dec: 0ae080e7     	jalr	0xae(ra) <_RNvMs4_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Arguments8from_strCsbF7z9a2DH2M_2os>
+   11df0: 00000097     	auipc	ra, 0x0
+   11df4: f0a080e7     	jalr	-0xf6(ra) <_RNvCsbF7z9a2DH2M_2os5print>
+   11df8: 4501         	li	a0, 0x0
+;     let _ = sys_exit(0);
+   11dfa: 00000097     	auipc	ra, 0x0
+   11dfe: f6e080e7     	jalr	-0x92(ra) <_RNvCsbF7z9a2DH2M_2os8sys_exit>
+   11e02: a009         	j	0x11e04 <.Lpcrel_hi3+0x26>
+;     loop {}
+   11e04: a001         	j	0x11e04 <.Lpcrel_hi3+0x26>
+
+0000000000011e06 <_RNvMs4_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Arguments23as_statically_known_strCsbF7z9a2DH2M_2os>:
+;     pub fn as_statically_known_str(&self) -> Option<&'static str> {
+   11e06: 7119         	addi	sp, sp, -0x80
+   11e08: fc86         	sd	ra, 0x78(sp)
+   11e0a: ec2a         	sd	a0, 0x18(sp)
+   11e0c: fc2a         	sd	a0, 0x38(sp)
+;         let bits: usize = unsafe { mem::transmute(self.args) };
+   11e0e: 6508         	ld	a0, 0x8(a0)
+   11e10: f02a         	sd	a0, 0x20(sp)
+   11e12: e0aa         	sd	a0, 0x40(sp)
+;         if bits & 1 == 1 {
+   11e14: 8905         	andi	a0, a0, 0x1
+   11e16: cd01         	beqz	a0, 0x11e2e <.Lpcrel_hi0>
+   11e18: a009         	j	0x11e1a <_RNvMs4_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Arguments23as_statically_known_strCsbF7z9a2DH2M_2os+0x14>
+   11e1a: 7502         	ld	a0, 0x20(sp)
+   11e1c: 65e2         	ld	a1, 0x18(sp)
+;                     self.template.as_ptr(),
+   11e1e: 618c         	ld	a1, 0x0(a1)
+   11e20: e42e         	sd	a1, 0x8(sp)
+   11e22: e4ae         	sd	a1, 0x48(sp)
+   11e24: e8ae         	sd	a1, 0x50(sp)
+;                     bits >> 1,
+   11e26: 8105         	srli	a0, a0, 0x1
+   11e28: e82a         	sd	a0, 0x10(sp)
+   11e2a: ecaa         	sd	a0, 0x58(sp)
+;             if ::core::ub_checks::$kind() {
+   11e2c: a811         	j	0x11e40 <.Lpcrel_hi0+0x12>
+
+0000000000011e2e <.Lpcrel_hi0>:
+;             None
+   11e2e: ffffe517     	auipc	a0, 0xffffe
+   11e32: 60a50513     	addi	a0, a0, 0x60a
+   11e36: 610c         	ld	a1, 0x0(a0)
+   11e38: 6508         	ld	a0, 0x8(a0)
+   11e3a: f42e         	sd	a1, 0x28(sp)
+   11e3c: f82a         	sd	a0, 0x30(sp)
+;         if bits & 1 == 1 {
+   11e3e: a02d         	j	0x11e68 <.Lpcrel_hi1+0x24>
+   11e40: 66c2         	ld	a3, 0x10(sp)
+   11e42: 6522         	ld	a0, 0x8(sp)
+
+0000000000011e44 <.Lpcrel_hi1>:
+;                 precondition_check($($arg,)*);
+   11e44: ffffe597     	auipc	a1, 0xffffe
+   11e48: 5cc58713     	addi	a4, a1, 0x5cc
+   11e4c: 4605         	li	a2, 0x1
+   11e4e: 85b2         	mv	a1, a2
+   11e50: 00000097     	auipc	ra, 0x0
+   11e54: 130080e7     	jalr	0x130(ra) <_RNvNvNtNtCsePS3Ti1NIB9_4core5slice3raw14from_raw_parts18precondition_checkCsbF7z9a2DH2M_2os>
+;             if ::core::ub_checks::$kind() {
+   11e58: a009         	j	0x11e5a <.Lpcrel_hi1+0x16>
+   11e5a: 6542         	ld	a0, 0x10(sp)
+   11e5c: 65a2         	ld	a1, 0x8(sp)
+;     aggregate_raw_ptr(data_pointer, metadata)
+   11e5e: f0ae         	sd	a1, 0x60(sp)
+   11e60: f4aa         	sd	a0, 0x68(sp)
+;             Some(unsafe {
+   11e62: f42e         	sd	a1, 0x28(sp)
+   11e64: f82a         	sd	a0, 0x30(sp)
+;         if bits & 1 == 1 {
+   11e66: a009         	j	0x11e68 <.Lpcrel_hi1+0x24>
+   11e68: 4501         	li	a0, 0x0
+;         if core::intrinsics::is_val_statically_known(s.is_some()) { s } else { None }
+   11e6a: 06a10ba3     	sb	a0, 0x77(sp)
+   11e6e: 07714503     	lbu	a0, 0x77(sp)
+   11e72: 8905         	andi	a0, a0, 0x1
+   11e74: e919         	bnez	a0, 0x11e8a <.Lpcrel_hi2+0x12>
+   11e76: a009         	j	0x11e78 <.Lpcrel_hi2>
+
+0000000000011e78 <.Lpcrel_hi2>:
+   11e78: ffffe517     	auipc	a0, 0xffffe
+   11e7c: 5c050513     	addi	a0, a0, 0x5c0
+   11e80: 610c         	ld	a1, 0x0(a0)
+   11e82: 6508         	ld	a0, 0x8(a0)
+   11e84: f42e         	sd	a1, 0x28(sp)
+   11e86: f82a         	sd	a0, 0x30(sp)
+   11e88: a011         	j	0x11e8c <.Lpcrel_hi2+0x14>
+   11e8a: a009         	j	0x11e8c <.Lpcrel_hi2+0x14>
+;     }
+   11e8c: 7522         	ld	a0, 0x28(sp)
+   11e8e: 75c2         	ld	a1, 0x30(sp)
+   11e90: 70e6         	ld	ra, 0x78(sp)
+   11e92: 6109         	addi	sp, sp, 0x80
+   11e94: 8082         	ret
+
+0000000000011e96 <_RNvMs4_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Arguments8from_strCsbF7z9a2DH2M_2os>:
+;     pub const fn from_str(s: &'static str) -> Arguments<'a> {
+   11e96: 1141         	addi	sp, sp, -0x10
+   11e98: e02a         	sd	a0, 0x0(sp)
+   11e9a: e42e         	sd	a1, 0x8(sp)
+;                 args: mem::transmute(s.len() << 1 | 1),
+   11e9c: 0586         	slli	a1, a1, 0x1
+   11e9e: 0585         	addi	a1, a1, 0x1
+;     }
+   11ea0: 0141         	addi	sp, sp, 0x10
+   11ea2: 8082         	ret
+
+0000000000011ea4 <_RNvXsK_NtCsePS3Ti1NIB9_4core3fmtNtB5_5ErrorNtB5_5Debug3fmtCsbF7z9a2DH2M_2os>:
+; #[derive(Copy, Clone, Debug, Default, Eq, Hash, Ord, PartialEq, PartialOrd)]
+   11ea4: 1101         	addi	sp, sp, -0x20
+   11ea6: ec06         	sd	ra, 0x18(sp)
+   11ea8: e02e         	sd	a1, 0x0(sp)
+   11eaa: 85aa         	mv	a1, a0
+   11eac: 6502         	ld	a0, 0x0(sp)
+   11eae: e42e         	sd	a1, 0x8(sp)
+   11eb0: e82a         	sd	a0, 0x10(sp)
+
+0000000000011eb2 <.Lpcrel_hi3>:
+   11eb2: ffffe597     	auipc	a1, 0xffffe
+   11eb6: 59658593     	addi	a1, a1, 0x596
+   11eba: 4615         	li	a2, 0x5
+   11ebc: 00000097     	auipc	ra, 0x0
+   11ec0: 5d2080e7     	jalr	0x5d2(ra) <_RNvXsb_NtCsePS3Ti1NIB9_4core3fmtNtB5_9FormatterNtB5_5Write9write_str>
+   11ec4: 60e2         	ld	ra, 0x18(sp)
+   11ec6: 6105         	addi	sp, sp, 0x20
+   11ec8: 8082         	ret
+
+0000000000011eca <_RNvXs_NvNtNtCsePS3Ti1NIB9_4core3fmt5Write9write_fmtQNtCsbF7z9a2DH2M_2os6StdoutNtB4_12SpecWriteFmt14spec_write_fmtBQ_>:
+;             fn spec_write_fmt(self, args: Arguments<'_>) -> Result {
+   11eca: 715d         	addi	sp, sp, -0x50
+   11ecc: e486         	sd	ra, 0x48(sp)
+   11ece: e02a         	sd	a0, 0x0(sp)
+   11ed0: e42e         	sd	a1, 0x8(sp)
+   11ed2: e832         	sd	a2, 0x10(sp)
+   11ed4: f82a         	sd	a0, 0x30(sp)
+   11ed6: 0028         	addi	a0, sp, 0x8
+;                 if let Some(s) = args.as_statically_known_str() {
+   11ed8: 00000097     	auipc	ra, 0x0
+   11edc: f2e080e7     	jalr	-0xd2(ra) <_RNvMs4_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Arguments23as_statically_known_strCsbF7z9a2DH2M_2os>
+   11ee0: f02a         	sd	a0, 0x20(sp)
+   11ee2: f42e         	sd	a1, 0x28(sp)
+   11ee4: 7502         	ld	a0, 0x20(sp)
+   11ee6: cd11         	beqz	a0, 0x11f02 <_RNvXs_NvNtNtCsePS3Ti1NIB9_4core3fmt5Write9write_fmtQNtCsbF7z9a2DH2M_2os6StdoutNtB4_12SpecWriteFmt14spec_write_fmtBQ_+0x38>
+   11ee8: a009         	j	0x11eea <_RNvXs_NvNtNtCsePS3Ti1NIB9_4core3fmt5Write9write_fmtQNtCsbF7z9a2DH2M_2os6StdoutNtB4_12SpecWriteFmt14spec_write_fmtBQ_+0x20>
+   11eea: 6502         	ld	a0, 0x0(sp)
+;                 if let Some(s) = args.as_statically_known_str() {
+   11eec: 7582         	ld	a1, 0x20(sp)
+   11eee: 7622         	ld	a2, 0x28(sp)
+   11ef0: fc2e         	sd	a1, 0x38(sp)
+   11ef2: e0b2         	sd	a2, 0x40(sp)
+;                     self.write_str(s)
+   11ef4: 00000097     	auipc	ra, 0x0
+   11ef8: ec6080e7     	jalr	-0x13a(ra) <_RNvXCsbF7z9a2DH2M_2osNtB2_6StdoutNtNtCsePS3Ti1NIB9_4core3fmt5Write9write_str>
+   11efc: 00a10fa3     	sb	a0, 0x1f(sp)
+;                 if let Some(s) = args.as_statically_known_str() {
+   11f00: a839         	j	0x11f1e <.Lpcrel_hi0+0x16>
+   11f02: 6502         	ld	a0, 0x0(sp)
+;                     write(self, args)
+   11f04: 6622         	ld	a2, 0x8(sp)
+   11f06: 66c2         	ld	a3, 0x10(sp)
+
+0000000000011f08 <.Lpcrel_hi0>:
+   11f08: ffffe597     	auipc	a1, 0xffffe
+   11f0c: 54858593     	addi	a1, a1, 0x548
+   11f10: 00000097     	auipc	ra, 0x0
+   11f14: 586080e7     	jalr	0x586(ra) <_RNvNtCsePS3Ti1NIB9_4core3fmt5write>
+   11f18: 00a10fa3     	sb	a0, 0x1f(sp)
+;                 if let Some(s) = args.as_statically_known_str() {
+   11f1c: a009         	j	0x11f1e <.Lpcrel_hi0+0x16>
+;             }
+   11f1e: 01f14503     	lbu	a0, 0x1f(sp)
+   11f22: 60a6         	ld	ra, 0x48(sp)
+   11f24: 6161         	addi	sp, sp, 0x50
+   11f26: 8082         	ret
+
+0000000000011f28 <_RNvYNtCsbF7z9a2DH2M_2os6StdoutNtNtCsePS3Ti1NIB9_4core3fmt5Write10write_charB4_>:
+;     fn write_char(&mut self, c: char) -> Result {
+   11f28: 711d         	addi	sp, sp, -0x60
+   11f2a: ec86         	sd	ra, 0x58(sp)
+   11f2c: e42e         	sd	a1, 0x8(sp)
+   11f2e: 85aa         	mv	a1, a0
+   11f30: 6522         	ld	a0, 0x8(sp)
+   11f32: e82e         	sd	a1, 0x10(sp)
+   11f34: f42e         	sd	a1, 0x28(sp)
+   11f36: da2a         	sw	a0, 0x34(sp)
+   11f38: 4581         	li	a1, 0x0
+;         self.write_str(c.encode_utf8(&mut [0; char::MAX_LEN_UTF8]))
+   11f3a: d22e         	sw	a1, 0x24(sp)
+   11f3c: 104c         	addi	a1, sp, 0x24
+   11f3e: fc2e         	sd	a1, 0x38(sp)
+   11f40: 4611         	li	a2, 0x4
+   11f42: e0b2         	sd	a2, 0x40(sp)
+;         unsafe { from_utf8_unchecked_mut(encode_utf8_raw(self as u32, dst)) }
+   11f44: 00000097     	auipc	ra, 0x0
+   11f48: b92080e7     	jalr	-0x46e(ra) <_RNvNtNtCsePS3Ti1NIB9_4core4char7methods15encode_utf8_rawCsbF7z9a2DH2M_2os>
+   11f4c: 862a         	mv	a2, a0
+   11f4e: 6542         	ld	a0, 0x10(sp)
+   11f50: ec32         	sd	a2, 0x18(sp)
+   11f52: 862e         	mv	a2, a1
+   11f54: 65e2         	ld	a1, 0x18(sp)
+   11f56: e4ae         	sd	a1, 0x48(sp)
+   11f58: e8b2         	sd	a2, 0x50(sp)
+;         self.write_str(c.encode_utf8(&mut [0; char::MAX_LEN_UTF8]))
+   11f5a: 00000097     	auipc	ra, 0x0
+   11f5e: e60080e7     	jalr	-0x1a0(ra) <_RNvXCsbF7z9a2DH2M_2osNtB2_6StdoutNtNtCsePS3Ti1NIB9_4core3fmt5Write9write_str>
+;     }
+   11f62: 60e6         	ld	ra, 0x58(sp)
+   11f64: 6125         	addi	sp, sp, 0x60
+   11f66: 8082         	ret
+
+0000000000011f68 <_RNvYNtCsbF7z9a2DH2M_2os6StdoutNtNtCsePS3Ti1NIB9_4core3fmt5Write9write_fmtB4_>:
+;     fn write_fmt(&mut self, args: Arguments<'_>) -> Result {
+   11f68: 1101         	addi	sp, sp, -0x20
+   11f6a: ec06         	sd	ra, 0x18(sp)
+   11f6c: e02a         	sd	a0, 0x0(sp)
+   11f6e: e42e         	sd	a1, 0x8(sp)
+   11f70: e832         	sd	a2, 0x10(sp)
+;         self.spec_write_fmt(args)
+   11f72: 00000097     	auipc	ra, 0x0
+   11f76: f58080e7     	jalr	-0xa8(ra) <_RNvXs_NvNtNtCsePS3Ti1NIB9_4core3fmt5Write9write_fmtQNtCsbF7z9a2DH2M_2os6StdoutNtB4_12SpecWriteFmt14spec_write_fmtBQ_>
+;     }
+   11f7a: 60e2         	ld	ra, 0x18(sp)
+   11f7c: 6105         	addi	sp, sp, 0x20
+   11f7e: 8082         	ret
+
+0000000000011f80 <_RNvNvNtNtCsePS3Ti1NIB9_4core5slice3raw14from_raw_parts18precondition_checkCsbF7z9a2DH2M_2os>:
+;             const fn precondition_check($($name:$ty),*) {
+   11f80: 7119         	addi	sp, sp, -0x80
+   11f82: fc86         	sd	ra, 0x78(sp)
+   11f84: e43a         	sd	a4, 0x8(sp)
+   11f86: e836         	sd	a3, 0x10(sp)
+   11f88: ec32         	sd	a2, 0x18(sp)
+   11f8a: 862e         	mv	a2, a1
+   11f8c: 65e2         	ld	a1, 0x18(sp)
+   11f8e: f032         	sd	a2, 0x20(sp)
+   11f90: f42a         	sd	a0, 0x28(sp)
+   11f92: fc2a         	sd	a0, 0x38(sp)
+   11f94: e0b2         	sd	a2, 0x40(sp)
+   11f96: e4ae         	sd	a1, 0x48(sp)
+   11f98: e8b6         	sd	a3, 0x50(sp)
+   11f9a: 4601         	li	a2, 0x0
+;     is_zst: bool,
+   11f9c: 04c10fa3     	sb	a2, 0x5f(sp)
+;             ub_checks::maybe_is_aligned_and_not_null(data, align, false)
+   11fa0: f0aa         	sd	a0, 0x60(sp)
+;             ptr.is_aligned_to(align)
+   11fa2: 00000097     	auipc	ra, 0x0
+   11fa6: a92080e7     	jalr	-0x56e(ra) <_RNvMNtNtCsePS3Ti1NIB9_4core3ptr9const_ptrPu13is_aligned_toCsbF7z9a2DH2M_2os>
+;     maybe_is_aligned(ptr, align) && (is_zst || !ptr.is_null())
+   11faa: e119         	bnez	a0, 0x11fb0 <_RNvNvNtNtCsePS3Ti1NIB9_4core5slice3raw14from_raw_parts18precondition_checkCsbF7z9a2DH2M_2os+0x30>
+   11fac: a009         	j	0x11fae <_RNvNvNtNtCsePS3Ti1NIB9_4core5slice3raw14from_raw_parts18precondition_checkCsbF7z9a2DH2M_2os+0x2e>
+;             ub_checks::maybe_is_aligned_and_not_null(data, align, false)
+   11fae: a021         	j	0x11fb6 <_RNvNvNtNtCsePS3Ti1NIB9_4core5slice3raw14from_raw_parts18precondition_checkCsbF7z9a2DH2M_2os+0x36>
+   11fb0: 7522         	ld	a0, 0x28(sp)
+;             ub_checks::maybe_is_aligned_and_not_null(data, align, false)
+   11fb2: e119         	bnez	a0, 0x11fb8 <_RNvNvNtNtCsePS3Ti1NIB9_4core5slice3raw14from_raw_parts18precondition_checkCsbF7z9a2DH2M_2os+0x38>
+   11fb4: a009         	j	0x11fb6 <_RNvNvNtNtCsePS3Ti1NIB9_4core5slice3raw14from_raw_parts18precondition_checkCsbF7z9a2DH2M_2os+0x36>
+   11fb6: a021         	j	0x11fbe <_RNvNvNtNtCsePS3Ti1NIB9_4core5slice3raw14from_raw_parts18precondition_checkCsbF7z9a2DH2M_2os+0x3e>
+   11fb8: 7502         	ld	a0, 0x20(sp)
+;     let max_len = if size == 0 { usize::MAX } else { isize::MAX as usize / size };
+   11fba: c115         	beqz	a0, 0x11fde <.Lpcrel_hi0+0x1e>
+   11fbc: a025         	j	0x11fe4 <.Lpcrel_hi0+0x24>
+   11fbe: 66a2         	ld	a3, 0x8(sp)
+
+0000000000011fc0 <.Lpcrel_hi0>:
+;                     let msg = concat!("unsafe precondition(s) violated: ", $message,
+   11fc0: ffffe517     	auipc	a0, 0xffffe
+   11fc4: 4c050513     	addi	a0, a0, 0x4c0
+   11fc8: f4aa         	sd	a0, 0x68(sp)
+   11fca: 11700593     	li	a1, 0x117
+   11fce: f8ae         	sd	a1, 0x70(sp)
+   11fd0: 22f00593     	li	a1, 0x22f
+   11fd4: 4601         	li	a2, 0x0
+;                     ::core::panicking::panic_nounwind_fmt(::core::fmt::Arguments::from_str(msg), false);
+   11fd6: 00000097     	auipc	ra, 0x0
+   11fda: 6e8080e7     	jalr	0x6e8(ra) <_RNvNtCsePS3Ti1NIB9_4core9panicking18panic_nounwind_fmt>
+   11fde: 557d         	li	a0, -0x1
+;     let max_len = if size == 0 { usize::MAX } else { isize::MAX as usize / size };
+   11fe0: f82a         	sd	a0, 0x30(sp)
+   11fe2: a801         	j	0x11ff2 <.Lpcrel_hi0+0x32>
+   11fe4: 7582         	ld	a1, 0x20(sp)
+   11fe6: 557d         	li	a0, -0x1
+   11fe8: 8105         	srli	a0, a0, 0x1
+;     let max_len = if size == 0 { usize::MAX } else { isize::MAX as usize / size };
+   11fea: 02b55533     	divu	a0, a0, a1
+   11fee: f82a         	sd	a0, 0x30(sp)
+   11ff0: a009         	j	0x11ff2 <.Lpcrel_hi0+0x32>
+   11ff2: 65c2         	ld	a1, 0x10(sp)
+;     len <= max_len
+   11ff4: 7542         	ld	a0, 0x30(sp)
+;                 && ub_checks::is_valid_allocation_size(size, len)
+   11ff6: 00b57463     	bgeu	a0, a1, 0x11ffe <.Lpcrel_hi0+0x3e>
+   11ffa: a009         	j	0x11ffc <.Lpcrel_hi0+0x3c>
+   11ffc: b7c9         	j	0x11fbe <_RNvNvNtNtCsePS3Ti1NIB9_4core5slice3raw14from_raw_parts18precondition_checkCsbF7z9a2DH2M_2os+0x3e>
+;             }
+   11ffe: 70e6         	ld	ra, 0x78(sp)
+   12000: 6109         	addi	sp, sp, 0x80
+   12002: 8082         	ret
+
+0000000000012004 <_RNvNvNtNtCsePS3Ti1NIB9_4core5slice3raw18from_raw_parts_mut18precondition_checkCsbF7z9a2DH2M_2os>:
+;             const fn precondition_check($($name:$ty),*) {
+   12004: 7119         	addi	sp, sp, -0x80
+   12006: fc86         	sd	ra, 0x78(sp)
+   12008: e43a         	sd	a4, 0x8(sp)
+   1200a: e836         	sd	a3, 0x10(sp)
+   1200c: ec32         	sd	a2, 0x18(sp)
+   1200e: 862e         	mv	a2, a1
+   12010: 65e2         	ld	a1, 0x18(sp)
+   12012: f032         	sd	a2, 0x20(sp)
+   12014: f42a         	sd	a0, 0x28(sp)
+   12016: fc2a         	sd	a0, 0x38(sp)
+   12018: e0b2         	sd	a2, 0x40(sp)
+   1201a: e4ae         	sd	a1, 0x48(sp)
+   1201c: e8b6         	sd	a3, 0x50(sp)
+   1201e: 4601         	li	a2, 0x0
+;     is_zst: bool,
+   12020: 04c10fa3     	sb	a2, 0x5f(sp)
+;             ub_checks::maybe_is_aligned_and_not_null(data, align, false)
+   12024: f0aa         	sd	a0, 0x60(sp)
+;             ptr.is_aligned_to(align)
+   12026: 00000097     	auipc	ra, 0x0
+   1202a: a0e080e7     	jalr	-0x5f2(ra) <_RNvMNtNtCsePS3Ti1NIB9_4core3ptr9const_ptrPu13is_aligned_toCsbF7z9a2DH2M_2os>
+;     maybe_is_aligned(ptr, align) && (is_zst || !ptr.is_null())
+   1202e: e119         	bnez	a0, 0x12034 <_RNvNvNtNtCsePS3Ti1NIB9_4core5slice3raw18from_raw_parts_mut18precondition_checkCsbF7z9a2DH2M_2os+0x30>
+   12030: a009         	j	0x12032 <_RNvNvNtNtCsePS3Ti1NIB9_4core5slice3raw18from_raw_parts_mut18precondition_checkCsbF7z9a2DH2M_2os+0x2e>
+;             ub_checks::maybe_is_aligned_and_not_null(data, align, false)
+   12032: a021         	j	0x1203a <_RNvNvNtNtCsePS3Ti1NIB9_4core5slice3raw18from_raw_parts_mut18precondition_checkCsbF7z9a2DH2M_2os+0x36>
+   12034: 7522         	ld	a0, 0x28(sp)
+;             ub_checks::maybe_is_aligned_and_not_null(data, align, false)
+   12036: e119         	bnez	a0, 0x1203c <_RNvNvNtNtCsePS3Ti1NIB9_4core5slice3raw18from_raw_parts_mut18precondition_checkCsbF7z9a2DH2M_2os+0x38>
+   12038: a009         	j	0x1203a <_RNvNvNtNtCsePS3Ti1NIB9_4core5slice3raw18from_raw_parts_mut18precondition_checkCsbF7z9a2DH2M_2os+0x36>
+   1203a: a021         	j	0x12042 <_RNvNvNtNtCsePS3Ti1NIB9_4core5slice3raw18from_raw_parts_mut18precondition_checkCsbF7z9a2DH2M_2os+0x3e>
+   1203c: 7502         	ld	a0, 0x20(sp)
+;     let max_len = if size == 0 { usize::MAX } else { isize::MAX as usize / size };
+   1203e: c115         	beqz	a0, 0x12062 <.Lpcrel_hi1+0x1e>
+   12040: a025         	j	0x12068 <.Lpcrel_hi1+0x24>
+   12042: 66a2         	ld	a3, 0x8(sp)
+
+0000000000012044 <.Lpcrel_hi1>:
+;                     let msg = concat!("unsafe precondition(s) violated: ", $message,
+   12044: ffffe517     	auipc	a0, 0xffffe
+   12048: 55350513     	addi	a0, a0, 0x553
+   1204c: f4aa         	sd	a0, 0x68(sp)
+   1204e: 11b00593     	li	a1, 0x11b
+   12052: f8ae         	sd	a1, 0x70(sp)
+   12054: 23700593     	li	a1, 0x237
+   12058: 4601         	li	a2, 0x0
+;                     ::core::panicking::panic_nounwind_fmt(::core::fmt::Arguments::from_str(msg), false);
+   1205a: 00000097     	auipc	ra, 0x0
+   1205e: 664080e7     	jalr	0x664(ra) <_RNvNtCsePS3Ti1NIB9_4core9panicking18panic_nounwind_fmt>
+   12062: 557d         	li	a0, -0x1
+;     let max_len = if size == 0 { usize::MAX } else { isize::MAX as usize / size };
+   12064: f82a         	sd	a0, 0x30(sp)
+   12066: a801         	j	0x12076 <.Lpcrel_hi1+0x32>
+   12068: 7582         	ld	a1, 0x20(sp)
+   1206a: 557d         	li	a0, -0x1
+   1206c: 8105         	srli	a0, a0, 0x1
+;     let max_len = if size == 0 { usize::MAX } else { isize::MAX as usize / size };
+   1206e: 02b55533     	divu	a0, a0, a1
+   12072: f82a         	sd	a0, 0x30(sp)
+   12074: a009         	j	0x12076 <.Lpcrel_hi1+0x32>
+   12076: 65c2         	ld	a1, 0x10(sp)
+;     len <= max_len
+   12078: 7542         	ld	a0, 0x30(sp)
+;                 && ub_checks::is_valid_allocation_size(size, len)
+   1207a: 00b57463     	bgeu	a0, a1, 0x12082 <.Lpcrel_hi1+0x3e>
+   1207e: a009         	j	0x12080 <.Lpcrel_hi1+0x3c>
+   12080: b7c9         	j	0x12042 <_RNvNvNtNtCsePS3Ti1NIB9_4core5slice3raw18from_raw_parts_mut18precondition_checkCsbF7z9a2DH2M_2os+0x3e>
+;             }
+   12082: 70e6         	ld	ra, 0x78(sp)
+   12084: 6109         	addi	sp, sp, 0x80
+   12086: 8082         	ret
+
+0000000000012088 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral>:
+/root/.rustup/toolchains/nightly-2026-05-08-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-objdump: warning: 'target/riscv64gc-unknown-none-elf/debug/os': failed to find source /rustc/f964de49bcb561e5c6c725bb37201e11d852daf0/library/core/src/fmt/mod.rs
+   12088: 7119         	addi	sp, sp, -0x80
+   1208a: fc86         	sd	ra, 0x78(sp)
+   1208c: f8a2         	sd	s0, 0x70(sp)
+   1208e: f4a6         	sd	s1, 0x68(sp)
+   12090: f0ca         	sd	s2, 0x60(sp)
+   12092: ecce         	sd	s3, 0x58(sp)
+   12094: e8d2         	sd	s4, 0x50(sp)
+   12096: e4d6         	sd	s5, 0x48(sp)
+   12098: e0da         	sd	s6, 0x40(sp)
+   1209a: fc5e         	sd	s7, 0x38(sp)
+   1209c: f862         	sd	s8, 0x30(sp)
+   1209e: f466         	sd	s9, 0x28(sp)
+   120a0: f06a         	sd	s10, 0x20(sp)
+   120a2: ec6e         	sd	s11, 0x18(sp)
+   120a4: 0100         	addi	s0, sp, 0x80
+   120a6: 89be         	mv	s3, a5
+   120a8: 8d3a         	mv	s10, a4
+   120aa: 8a36         	mv	s4, a3
+   120ac: 8ab2         	mv	s5, a2
+   120ae: 8baa         	mv	s7, a0
+   120b0: 01052c03     	lw	s8, 0x10(a0)
+   120b4: c9b5         	beqz	a1, 0x12128 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0xa0>
+   120b6: 02ac1513     	slli	a0, s8, 0x2a
+   120ba: 03f55c93     	srli	s9, a0, 0x3f
+   120be: fffc8513     	addi	a0, s9, -0x1
+   120c2: 02b56b13     	ori	s6, a0, 0x2b
+   120c6: 028c1513     	slli	a0, s8, 0x28
+   120ca: 9cce         	add	s9, s9, s3
+   120cc: 06055663     	bgez	a0, 0x12138 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0xb0>
+   120d0: 02000513     	li	a0, 0x20
+/root/.rustup/toolchains/nightly-2026-05-08-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-objdump: warning: 'target/riscv64gc-unknown-none-elf/debug/os': failed to find source /rustc/f964de49bcb561e5c6c725bb37201e11d852daf0/library/core/src/str/count.rs
+   120d4: 0aaa7863     	bgeu	s4, a0, 0x12184 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0xfc>
+   120d8: 4501         	li	a0, 0x0
+/root/.rustup/toolchains/nightly-2026-05-08-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-objdump: warning: 'target/riscv64gc-unknown-none-elf/debug/os': failed to find source /rustc/f964de49bcb561e5c6c725bb37201e11d852daf0/library/core/src/slice/iter/macros.rs
+   120da: 000a0f63     	beqz	s4, 0x120f8 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0x70>
+   120de: 014a85b3     	add	a1, s5, s4
+   120e2: 8656         	mv	a2, s5
+   120e4: 00060683     	lb	a3, 0x0(a2)
+   120e8: 0605         	addi	a2, a2, 0x1
+/root/.rustup/toolchains/nightly-2026-05-08-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-objdump: warning: 'target/riscv64gc-unknown-none-elf/debug/os': failed to find source /rustc/f964de49bcb561e5c6c725bb37201e11d852daf0/library/core/src/str/validations.rs
+   120ea: fc06a693     	slti	a3, a3, -0x40
+   120ee: 0016c693     	xori	a3, a3, 0x1
+/root/.rustup/toolchains/nightly-2026-05-08-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-objdump: warning: 'target/riscv64gc-unknown-none-elf/debug/os': failed to find source /rustc/f964de49bcb561e5c6c725bb37201e11d852daf0/library/core/src/iter/traits/accum.rs
+   120f2: 9536         	add	a0, a0, a3
+   120f4: feb618e3     	bne	a2, a1, 0x120e4 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0x5c>
+   120f8: 9caa         	add	s9, s9, a0
+   120fa: 014bd903     	lhu	s2, 0x14(s7)
+   120fe: 052cf263     	bgeu	s9, s2, 0x12142 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0xba>
+   12102: 027c1513     	slli	a0, s8, 0x27
+   12106: f9a43823     	sd	s10, -0x70(s0)
+   1210a: 08054963     	bltz	a0, 0x1219c <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0x114>
+   1210e: 41990633     	sub	a2, s2, s9
+   12112: 021c1513     	slli	a0, s8, 0x21
+   12116: 9179         	srli	a0, a0, 0x3e
+   12118: 4585         	li	a1, 0x1
+   1211a: 1c2e         	slli	s8, s8, 0x2b
+   1211c: 0ea5c063     	blt	a1, a0, 0x121fc <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0x174>
+   12120: 10051363     	bnez	a0, 0x12226 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0x19e>
+   12124: 4d81         	li	s11, 0x0
+   12126: a209         	j	0x12228 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0x1a0>
+   12128: 4c85         	li	s9, 0x1
+   1212a: 02d00b13     	li	s6, 0x2d
+   1212e: 028c1513     	slli	a0, s8, 0x28
+   12132: 9cce         	add	s9, s9, s3
+   12134: f8054ee3     	bltz	a0, 0x120d0 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0x48>
+   12138: 4a81         	li	s5, 0x0
+   1213a: 014bd903     	lhu	s2, 0x14(s7)
+   1213e: fd2ce2e3     	bltu	s9, s2, 0x12102 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0x7a>
+   12142: 000bbc03     	ld	s8, 0x0(s7)
+   12146: 008bb483     	ld	s1, 0x8(s7)
+   1214a: 8562         	mv	a0, s8
+   1214c: 85a6         	mv	a1, s1
+   1214e: 865a         	mv	a2, s6
+   12150: 86d6         	mv	a3, s5
+   12152: 8752         	mv	a4, s4
+   12154: 00000097     	auipc	ra, 0x0
+   12158: 758080e7     	jalr	0x758(ra) <_RNvNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB7_9Formatter12pad_integral12write_prefix>
+/root/.rustup/toolchains/nightly-2026-05-08-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-objdump: warning: 'target/riscv64gc-unknown-none-elf/debug/os': failed to find source /rustc/f964de49bcb561e5c6c725bb37201e11d852daf0/library/core/src/result.rs
+   1215c: ed75         	bnez	a0, 0x12258 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0x1d0>
+   1215e: 6c9c         	ld	a5, 0x18(s1)
+   12160: 8562         	mv	a0, s8
+   12162: 85ea         	mv	a1, s10
+   12164: 864e         	mv	a2, s3
+   12166: 70e6         	ld	ra, 0x78(sp)
+   12168: 7446         	ld	s0, 0x70(sp)
+   1216a: 74a6         	ld	s1, 0x68(sp)
+   1216c: 7906         	ld	s2, 0x60(sp)
+   1216e: 69e6         	ld	s3, 0x58(sp)
+   12170: 6a46         	ld	s4, 0x50(sp)
+   12172: 6aa6         	ld	s5, 0x48(sp)
+   12174: 6b06         	ld	s6, 0x40(sp)
+   12176: 7be2         	ld	s7, 0x38(sp)
+   12178: 7c42         	ld	s8, 0x30(sp)
+   1217a: 7ca2         	ld	s9, 0x28(sp)
+   1217c: 7d02         	ld	s10, 0x20(sp)
+   1217e: 6de2         	ld	s11, 0x18(sp)
+   12180: 6109         	addi	sp, sp, 0x80
+   12182: 8782         	jr	a5
+   12184: 8556         	mv	a0, s5
+   12186: 85d2         	mv	a1, s4
+   12188: 00000097     	auipc	ra, 0x0
+   1218c: 594080e7     	jalr	0x594(ra) <_RNvNtNtCsePS3Ti1NIB9_4core3str5count14do_count_chars>
+   12190: 9caa         	add	s9, s9, a0
+   12192: 014bd903     	lhu	s2, 0x14(s7)
+   12196: fb2cf6e3     	bgeu	s9, s2, 0x12142 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0xba>
+   1219a: b7a5         	j	0x12102 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0x7a>
+   1219c: 010bbd03     	ld	s10, 0x10(s7)
+   121a0: 000bbc03     	ld	s8, 0x0(s7)
+   121a4: 008bbd83     	ld	s11, 0x8(s7)
+   121a8: 9fe00537     	lui	a0, 0x9fe00
+   121ac: 200005b7     	lui	a1, 0x20000
+   121b0: 00ad7533     	and	a0, s10, a0
+   121b4: 03058593     	addi	a1, a1, 0x30
+   121b8: 8d4d         	or	a0, a0, a1
+   121ba: 00aba823     	sw	a0, 0x10(s7)
+   121be: 8562         	mv	a0, s8
+   121c0: 85ee         	mv	a1, s11
+   121c2: 865a         	mv	a2, s6
+   121c4: 86d6         	mv	a3, s5
+   121c6: 8752         	mv	a4, s4
+   121c8: 00000097     	auipc	ra, 0x0
+   121cc: 6e4080e7     	jalr	0x6e4(ra) <_RNvNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB7_9Formatter12pad_integral12write_prefix>
+   121d0: 4a05         	li	s4, 0x1
+   121d2: e541         	bnez	a0, 0x1225a <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0x1d2>
+   121d4: 4481         	li	s1, 0x0
+   121d6: 41990533     	sub	a0, s2, s9
+   121da: 6941         	lui	s2, 0x10
+   121dc: 197d         	addi	s2, s2, -0x1
+   121de: 01257ab3     	and	s5, a0, s2
+/root/.rustup/toolchains/nightly-2026-05-08-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-objdump: warning: 'target/riscv64gc-unknown-none-elf/debug/os': failed to find source /rustc/f964de49bcb561e5c6c725bb37201e11d852daf0/library/core/src/cmp.rs
+   121e2: 0124f533     	and	a0, s1, s2
+   121e6: 03557463     	bgeu	a0, s5, 0x1220e <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0x186>
+   121ea: 020db603     	ld	a2, 0x20(s11)
+/root/.rustup/toolchains/nightly-2026-05-08-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-objdump: warning: 'target/riscv64gc-unknown-none-elf/debug/os': failed to find source /rustc/f964de49bcb561e5c6c725bb37201e11d852daf0/library/core/src/num/uint_macros.rs
+   121ee: 0485         	addi	s1, s1, 0x1
+   121f0: 03000593     	li	a1, 0x30
+   121f4: 8562         	mv	a0, s8
+   121f6: 9602         	jalr	a2
+   121f8: d56d         	beqz	a0, 0x121e2 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0x15a>
+   121fa: a085         	j	0x1225a <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0x1d2>
+   121fc: 4589         	li	a1, 0x2
+   121fe: 8db2         	mv	s11, a2
+   12200: 02b51463     	bne	a0, a1, 0x12228 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0x1a0>
+   12204: 03061513     	slli	a0, a2, 0x30
+   12208: 03155d93     	srli	s11, a0, 0x31
+   1220c: a831         	j	0x12228 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0x1a0>
+   1220e: 018db683     	ld	a3, 0x18(s11)
+   12212: 8562         	mv	a0, s8
+   12214: f9043583     	ld	a1, -0x70(s0)
+   12218: 864e         	mv	a2, s3
+   1221a: 9682         	jalr	a3
+   1221c: ed1d         	bnez	a0, 0x1225a <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0x1d2>
+   1221e: 4a01         	li	s4, 0x0
+   12220: 01abb823     	sd	s10, 0x10(s7)
+   12224: a81d         	j	0x1225a <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0x1d2>
+   12226: 8db2         	mv	s11, a2
+   12228: f8c43423     	sd	a2, -0x78(s0)
+   1222c: 4d01         	li	s10, 0x0
+   1222e: 02bc5c13     	srli	s8, s8, 0x2b
+   12232: 000bbc83     	ld	s9, 0x0(s7)
+   12236: 008bbb83     	ld	s7, 0x8(s7)
+   1223a: 64c1         	lui	s1, 0x10
+   1223c: 14fd         	addi	s1, s1, -0x1
+   1223e: 009df933     	and	s2, s11, s1
+   12242: 009d7533     	and	a0, s10, s1
+/root/.rustup/toolchains/nightly-2026-05-08-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-objdump: warning: 'target/riscv64gc-unknown-none-elf/debug/os': failed to find source /rustc/f964de49bcb561e5c6c725bb37201e11d852daf0/library/core/src/iter/range.rs
+   12246: 03257a63     	bgeu	a0, s2, 0x1227a <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0x1f2>
+   1224a: 020bb603     	ld	a2, 0x20(s7)
+   1224e: 0d05         	addi	s10, s10, 0x1
+   12250: 8566         	mv	a0, s9
+   12252: 85e2         	mv	a1, s8
+   12254: 9602         	jalr	a2
+   12256: d575         	beqz	a0, 0x12242 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0x1ba>
+   12258: 4a05         	li	s4, 0x1
+   1225a: 8552         	mv	a0, s4
+   1225c: 70e6         	ld	ra, 0x78(sp)
+   1225e: 7446         	ld	s0, 0x70(sp)
+   12260: 74a6         	ld	s1, 0x68(sp)
+   12262: 7906         	ld	s2, 0x60(sp)
+   12264: 69e6         	ld	s3, 0x58(sp)
+   12266: 6a46         	ld	s4, 0x50(sp)
+   12268: 6aa6         	ld	s5, 0x48(sp)
+   1226a: 6b06         	ld	s6, 0x40(sp)
+   1226c: 7be2         	ld	s7, 0x38(sp)
+   1226e: 7c42         	ld	s8, 0x30(sp)
+   12270: 7ca2         	ld	s9, 0x28(sp)
+   12272: 7d02         	ld	s10, 0x20(sp)
+   12274: 6de2         	ld	s11, 0x18(sp)
+   12276: 6109         	addi	sp, sp, 0x80
+   12278: 8082         	ret
+   1227a: 8566         	mv	a0, s9
+   1227c: 85de         	mv	a1, s7
+   1227e: 865a         	mv	a2, s6
+   12280: 86d6         	mv	a3, s5
+   12282: 8752         	mv	a4, s4
+   12284: 00000097     	auipc	ra, 0x0
+   12288: 628080e7     	jalr	0x628(ra) <_RNvNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB7_9Formatter12pad_integral12write_prefix>
+   1228c: 4a05         	li	s4, 0x1
+   1228e: f571         	bnez	a0, 0x1225a <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0x1d2>
+   12290: 018bb683     	ld	a3, 0x18(s7)
+   12294: 8566         	mv	a0, s9
+   12296: f9043583     	ld	a1, -0x70(s0)
+   1229a: 864e         	mv	a2, s3
+   1229c: 9682         	jalr	a3
+   1229e: fd55         	bnez	a0, 0x1225a <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0x1d2>
+   122a0: 4481         	li	s1, 0x0
+   122a2: f8843503     	ld	a0, -0x78(s0)
+   122a6: 41b50533     	sub	a0, a0, s11
+   122aa: 6941         	lui	s2, 0x10
+   122ac: 197d         	addi	s2, s2, -0x1
+   122ae: 012579b3     	and	s3, a0, s2
+   122b2: 0124f533     	and	a0, s1, s2
+   122b6: 01353a33     	sltu	s4, a0, s3
+   122ba: fb3570e3     	bgeu	a0, s3, 0x1225a <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0x1d2>
+   122be: 020bb603     	ld	a2, 0x20(s7)
+   122c2: 0485         	addi	s1, s1, 0x1
+   122c4: 8566         	mv	a0, s9
+   122c6: 85e2         	mv	a1, s8
+   122c8: 9602         	jalr	a2
+   122ca: d565         	beqz	a0, 0x122b2 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0x22a>
+   122cc: b779         	j	0x1225a <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral+0x1d2>
+
+00000000000122ce <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad>:
+   122ce: 711d         	addi	sp, sp, -0x60
+   122d0: ec86         	sd	ra, 0x58(sp)
+   122d2: e8a2         	sd	s0, 0x50(sp)
+   122d4: e4a6         	sd	s1, 0x48(sp)
+   122d6: e0ca         	sd	s2, 0x40(sp)
+   122d8: fc4e         	sd	s3, 0x38(sp)
+   122da: f852         	sd	s4, 0x30(sp)
+   122dc: f456         	sd	s5, 0x28(sp)
+   122de: f05a         	sd	s6, 0x20(sp)
+   122e0: ec5e         	sd	s7, 0x18(sp)
+   122e2: e862         	sd	s8, 0x10(sp)
+   122e4: e466         	sd	s9, 0x8(sp)
+   122e6: e06a         	sd	s10, 0x0(sp)
+   122e8: 1080         	addi	s0, sp, 0x60
+   122ea: 89b2         	mv	s3, a2
+   122ec: 01056483     	lwu	s1, 0x10(a0)
+   122f0: 18000637     	lui	a2, 0x18000
+   122f4: 8e65         	and	a2, a2, s1
+   122f6: 892e         	mv	s2, a1
+   122f8: ca4d         	beqz	a2, 0x123aa <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0xdc>
+   122fa: 02349593     	slli	a1, s1, 0x23
+   122fe: 0405c863     	bltz	a1, 0x1234e <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0x80>
+   12302: 02000593     	li	a1, 0x20
+   12306: 0cb9f563     	bgeu	s3, a1, 0x123d0 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0x102>
+   1230a: 4581         	li	a1, 0x0
+   1230c: 00098f63     	beqz	s3, 0x1232a <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0x5c>
+   12310: 01390633     	add	a2, s2, s3
+   12314: 86ca         	mv	a3, s2
+   12316: 00068703     	lb	a4, 0x0(a3)
+   1231a: 0685         	addi	a3, a3, 0x1
+   1231c: fc072713     	slti	a4, a4, -0x40
+   12320: 00174713     	xori	a4, a4, 0x1
+   12324: 95ba         	add	a1, a1, a4
+   12326: fec698e3     	bne	a3, a2, 0x12316 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0x48>
+   1232a: 01455603     	lhu	a2, 0x14(a0)
+   1232e: 06c5fe63     	bgeu	a1, a2, 0x123aa <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0xdc>
+   12332: 4b81         	li	s7, 0x0
+   12334: 40b60b33     	sub	s6, a2, a1
+   12338: 02149613     	slli	a2, s1, 0x21
+   1233c: 9279         	srli	a2, a2, 0x3e
+   1233e: 4685         	li	a3, 0x1
+   12340: 02b49593     	slli	a1, s1, 0x2b
+   12344: 0ac6c463     	blt	a3, a2, 0x123ec <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0x11e>
+   12348: ca4d         	beqz	a2, 0x123fa <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0x12c>
+   1234a: 8bda         	mv	s7, s6
+   1234c: a07d         	j	0x123fa <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0x12c>
+   1234e: 01655583     	lhu	a1, 0x16(a0)
+/root/.rustup/toolchains/nightly-2026-05-08-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-objdump: warning: 'target/riscv64gc-unknown-none-elf/debug/os': failed to find source /rustc/f964de49bcb561e5c6c725bb37201e11d852daf0/library/core/src/iter/traits/iterator.rs
+   12352: 10058263     	beqz	a1, 0x12456 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0x188>
+   12356: 013906b3     	add	a3, s2, s3
+   1235a: 0e000813     	li	a6, 0xe0
+   1235e: 87ca         	mv	a5, s2
+   12360: 862e         	mv	a2, a1
+   12362: 4981         	li	s3, 0x0
+   12364: a811         	j	0x12378 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0xaa>
+   12366: 00178713     	addi	a4, a5, 0x1
+/root/.rustup/toolchains/nightly-2026-05-08-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-objdump: warning: 'target/riscv64gc-unknown-none-elf/debug/os': failed to find source /rustc/f964de49bcb561e5c6c725bb37201e11d852daf0/library/core/src/str/iter.rs
+   1236a: 413787b3     	sub	a5, a5, s3
+/root/.rustup/toolchains/nightly-2026-05-08-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-objdump: warning: 'target/riscv64gc-unknown-none-elf/debug/os': failed to find source /rustc/f964de49bcb561e5c6c725bb37201e11d852daf0/library/core/src/num/nonzero.rs
+   1236e: 167d         	addi	a2, a2, -0x1
+   12370: 40f709b3     	sub	s3, a4, a5
+   12374: 87ba         	mv	a5, a4
+   12376: c60d         	beqz	a2, 0x123a0 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0xd2>
+   12378: 02d78463     	beq	a5, a3, 0x123a0 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0xd2>
+   1237c: 00078703     	lb	a4, 0x0(a5)
+   12380: fe0753e3     	bgez	a4, 0x12366 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0x98>
+   12384: 0ff77713     	zext.b	a4, a4
+   12388: 01076963     	bltu	a4, a6, 0x1239a <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0xcc>
+   1238c: 0f073713     	sltiu	a4, a4, 0xf0
+   12390: 00174713     	xori	a4, a4, 0x1
+   12394: 973e         	add	a4, a4, a5
+   12396: 070d         	addi	a4, a4, 0x3
+   12398: bfc9         	j	0x1236a <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0x9c>
+   1239a: 00278713     	addi	a4, a5, 0x2
+   1239e: b7f1         	j	0x1236a <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0x9c>
+   123a0: 8d91         	sub	a1, a1, a2
+   123a2: 01455603     	lhu	a2, 0x14(a0)
+   123a6: f8c5e6e3     	bltu	a1, a2, 0x12332 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0x64>
+   123aa: 650c         	ld	a1, 0x8(a0)
+   123ac: 6108         	ld	a0, 0x0(a0)
+   123ae: 6d9c         	ld	a5, 0x18(a1)
+   123b0: 85ca         	mv	a1, s2
+   123b2: 864e         	mv	a2, s3
+   123b4: 60e6         	ld	ra, 0x58(sp)
+   123b6: 6446         	ld	s0, 0x50(sp)
+   123b8: 64a6         	ld	s1, 0x48(sp)
+   123ba: 6906         	ld	s2, 0x40(sp)
+   123bc: 79e2         	ld	s3, 0x38(sp)
+   123be: 7a42         	ld	s4, 0x30(sp)
+   123c0: 7aa2         	ld	s5, 0x28(sp)
+   123c2: 7b02         	ld	s6, 0x20(sp)
+   123c4: 6be2         	ld	s7, 0x18(sp)
+   123c6: 6c42         	ld	s8, 0x10(sp)
+   123c8: 6ca2         	ld	s9, 0x8(sp)
+   123ca: 6d02         	ld	s10, 0x0(sp)
+   123cc: 6125         	addi	sp, sp, 0x60
+   123ce: 8782         	jr	a5
+   123d0: 8a2a         	mv	s4, a0
+   123d2: 854a         	mv	a0, s2
+   123d4: 85ce         	mv	a1, s3
+   123d6: 00000097     	auipc	ra, 0x0
+   123da: 346080e7     	jalr	0x346(ra) <_RNvNtNtCsePS3Ti1NIB9_4core3str5count14do_count_chars>
+   123de: 85aa         	mv	a1, a0
+   123e0: 8552         	mv	a0, s4
+   123e2: 014a5603     	lhu	a2, 0x14(s4)
+   123e6: fcc5f2e3     	bgeu	a1, a2, 0x123aa <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0xdc>
+   123ea: b7a1         	j	0x12332 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0x64>
+   123ec: 4689         	li	a3, 0x2
+   123ee: 00d61663     	bne	a2, a3, 0x123fa <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0x12c>
+   123f2: 030b1613     	slli	a2, s6, 0x30
+   123f6: 03165b93     	srli	s7, a2, 0x31
+   123fa: 4481         	li	s1, 0x0
+   123fc: 02b5da13     	srli	s4, a1, 0x2b
+   12400: 00053a83     	ld	s5, 0x0(a0)
+   12404: 00853c03     	ld	s8, 0x8(a0)
+   12408: 6cc1         	lui	s9, 0x10
+   1240a: 1cfd         	addi	s9, s9, -0x1
+   1240c: 019bfd33     	and	s10, s7, s9
+   12410: 0194f533     	and	a0, s1, s9
+   12414: 01a57a63     	bgeu	a0, s10, 0x12428 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0x15a>
+   12418: 020c3603     	ld	a2, 0x20(s8)
+   1241c: 0485         	addi	s1, s1, 0x1
+   1241e: 8556         	mv	a0, s5
+   12420: 85d2         	mv	a1, s4
+   12422: 9602         	jalr	a2
+   12424: d575         	beqz	a0, 0x12410 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0x142>
+   12426: a801         	j	0x12436 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0x168>
+   12428: 018c3683     	ld	a3, 0x18(s8)
+   1242c: 8556         	mv	a0, s5
+   1242e: 85ca         	mv	a1, s2
+   12430: 864e         	mv	a2, s3
+   12432: 9682         	jalr	a3
+   12434: c905         	beqz	a0, 0x12464 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0x196>
+   12436: 4905         	li	s2, 0x1
+   12438: 854a         	mv	a0, s2
+   1243a: 60e6         	ld	ra, 0x58(sp)
+   1243c: 6446         	ld	s0, 0x50(sp)
+   1243e: 64a6         	ld	s1, 0x48(sp)
+   12440: 6906         	ld	s2, 0x40(sp)
+   12442: 79e2         	ld	s3, 0x38(sp)
+   12444: 7a42         	ld	s4, 0x30(sp)
+   12446: 7aa2         	ld	s5, 0x28(sp)
+   12448: 7b02         	ld	s6, 0x20(sp)
+   1244a: 6be2         	ld	s7, 0x18(sp)
+   1244c: 6c42         	ld	s8, 0x10(sp)
+   1244e: 6ca2         	ld	s9, 0x8(sp)
+   12450: 6d02         	ld	s10, 0x0(sp)
+   12452: 6125         	addi	sp, sp, 0x60
+   12454: 8082         	ret
+   12456: 4981         	li	s3, 0x0
+   12458: 85ae         	mv	a1, a1
+   1245a: 01455603     	lhu	a2, 0x14(a0)
+   1245e: ecc5eae3     	bltu	a1, a2, 0x12332 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0x64>
+   12462: b7a1         	j	0x123aa <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0xdc>
+   12464: 4481         	li	s1, 0x0
+   12466: 417b0533     	sub	a0, s6, s7
+   1246a: 69c1         	lui	s3, 0x10
+   1246c: 19fd         	addi	s3, s3, -0x1
+   1246e: 01357b33     	and	s6, a0, s3
+   12472: 0134f533     	and	a0, s1, s3
+   12476: 01653933     	sltu	s2, a0, s6
+   1247a: fb657fe3     	bgeu	a0, s6, 0x12438 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0x16a>
+   1247e: 020c3603     	ld	a2, 0x20(s8)
+   12482: 0485         	addi	s1, s1, 0x1
+   12484: 8556         	mv	a0, s5
+   12486: 85d2         	mv	a1, s4
+   12488: 9602         	jalr	a2
+   1248a: d565         	beqz	a0, 0x12472 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0x1a4>
+   1248c: b775         	j	0x12438 <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad+0x16a>
+
+000000000001248e <_RNvXsb_NtCsePS3Ti1NIB9_4core3fmtNtB5_9FormatterNtB5_5Write9write_str>:
+   1248e: 6514         	ld	a3, 0x8(a0)
+   12490: 6108         	ld	a0, 0x0(a0)
+   12492: 6e9c         	ld	a5, 0x18(a3)
+   12494: 8782         	jr	a5
+
+0000000000012496 <_RNvNtCsePS3Ti1NIB9_4core3fmt5write>:
+   12496: 7119         	addi	sp, sp, -0x80
+   12498: fc86         	sd	ra, 0x78(sp)
+   1249a: f8a2         	sd	s0, 0x70(sp)
+   1249c: f4a6         	sd	s1, 0x68(sp)
+   1249e: f0ca         	sd	s2, 0x60(sp)
+   124a0: ecce         	sd	s3, 0x58(sp)
+   124a2: e8d2         	sd	s4, 0x50(sp)
+   124a4: e4d6         	sd	s5, 0x48(sp)
+   124a6: e0da         	sd	s6, 0x40(sp)
+   124a8: fc5e         	sd	s7, 0x38(sp)
+   124aa: f862         	sd	s8, 0x30(sp)
+   124ac: f466         	sd	s9, 0x28(sp)
+   124ae: f06a         	sd	s10, 0x20(sp)
+   124b0: 0100         	addi	s0, sp, 0x80
+   124b2: 89b6         	mv	s3, a3
+   124b4: 892e         	mv	s2, a1
+   124b6: 0016f593     	andi	a1, a3, 0x1
+   124ba: 8a2a         	mv	s4, a0
+   124bc: 16059063     	bnez	a1, 0x1261c <_RNvNtCsePS3Ti1NIB9_4core3fmt5write+0x186>
+/root/.rustup/toolchains/nightly-2026-05-08-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-objdump: warning: 'target/riscv64gc-unknown-none-elf/debug/os': failed to find source /rustc/f964de49bcb561e5c6c725bb37201e11d852daf0/library/core/src/ptr/mod.rs
+   124c0: 00064483     	lbu	s1, 0x0(a2)
+   124c4: 18048163     	beqz	s1, 0x12646 <_RNvNtCsePS3Ti1NIB9_4core3fmt5write+0x1b0>
+   124c8: 4c81         	li	s9, 0x0
+   124ca: 01893b03     	ld	s6, 0x18(s2)
+   124ce: 08000b93     	li	s7, 0x80
+   124d2: 0c000c13     	li	s8, 0xc0
+   124d6: 60000d37     	lui	s10, 0x60000
+   124da: 020d0d13     	addi	s10, s10, 0x20
+   124de: a805         	j	0x1250e <_RNvNtCsePS3Ti1NIB9_4core3fmt5write+0x78>
+/root/.rustup/toolchains/nightly-2026-05-08-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-objdump: warning: 'target/riscv64gc-unknown-none-elf/debug/os': failed to find source /rustc/f964de49bcb561e5c6c725bb37201e11d852daf0/library/core/src/ptr/non_null.rs
+   124e0: 004c9513     	slli	a0, s9, 0x4
+   124e4: 00a985b3     	add	a1, s3, a0
+/root/.rustup/toolchains/nightly-2026-05-08-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-objdump: warning: 'target/riscv64gc-unknown-none-elf/debug/os': failed to find source /rustc/f964de49bcb561e5c6c725bb37201e11d852daf0/library/core/src/fmt/rt.rs
+   124e8: 6188         	ld	a0, 0x0(a1)
+   124ea: 6590         	ld	a2, 0x8(a1)
+   124ec: f9443423     	sd	s4, -0x78(s0)
+   124f0: f9243823     	sd	s2, -0x70(s0)
+   124f4: f9a43c23     	sd	s10, -0x68(s0)
+   124f8: f8840593     	addi	a1, s0, -0x78
+   124fc: 9602         	jalr	a2
+   124fe: 14051663     	bnez	a0, 0x1264a <_RNvNtCsePS3Ti1NIB9_4core3fmt5write+0x1b4>
+   12502: 0c85         	addi	s9, s9, 0x1
+   12504: 000ac483     	lbu	s1, 0x0(s5)
+   12508: 8656         	mv	a2, s5
+   1250a: 12048e63     	beqz	s1, 0x12646 <_RNvNtCsePS3Ti1NIB9_4core3fmt5write+0x1b0>
+   1250e: 03849513     	slli	a0, s1, 0x38
+   12512: 00160a93     	addi	s5, a2, 0x1
+   12516: 00054a63     	bltz	a0, 0x1252a <_RNvNtCsePS3Ti1NIB9_4core3fmt5write+0x94>
+   1251a: 8552         	mv	a0, s4
+   1251c: 85d6         	mv	a1, s5
+   1251e: 8626         	mv	a2, s1
+   12520: 9b02         	jalr	s6
+   12522: 12051463     	bnez	a0, 0x1264a <_RNvNtCsePS3Ti1NIB9_4core3fmt5write+0x1b4>
+   12526: 9aa6         	add	s5, s5, s1
+   12528: bff1         	j	0x12504 <_RNvNtCsePS3Ti1NIB9_4core3fmt5write+0x6e>
+   1252a: 05748b63     	beq	s1, s7, 0x12580 <_RNvNtCsePS3Ti1NIB9_4core3fmt5write+0xea>
+   1252e: fb8489e3     	beq	s1, s8, 0x124e0 <_RNvNtCsePS3Ti1NIB9_4core3fmt5write+0x4a>
+   12532: 0014f513     	andi	a0, s1, 0x1
+   12536: 85ea         	mv	a1, s10
+   12538: c115         	beqz	a0, 0x1255c <_RNvNtCsePS3Ti1NIB9_4core3fmt5write+0xc6>
+   1253a: 00264503     	lbu	a0, 0x2(a2)
+   1253e: 00164583     	lbu	a1, 0x1(a2)
+   12542: 00364683     	lbu	a3, 0x3(a2)
+   12546: 00464703     	lbu	a4, 0x4(a2)
+   1254a: 0522         	slli	a0, a0, 0x8
+   1254c: 8d4d         	or	a0, a0, a1
+   1254e: 06c2         	slli	a3, a3, 0x10
+   12550: 0762         	slli	a4, a4, 0x18
+   12552: 00d765b3     	or	a1, a4, a3
+   12556: 8dc9         	or	a1, a1, a0
+   12558: 00560a93     	addi	s5, a2, 0x5
+   1255c: 0024f513     	andi	a0, s1, 0x2
+   12560: e121         	bnez	a0, 0x125a0 <_RNvNtCsePS3Ti1NIB9_4core3fmt5write+0x10a>
+   12562: 4601         	li	a2, 0x0
+   12564: 0044f513     	andi	a0, s1, 0x4
+   12568: c531         	beqz	a0, 0x125b4 <_RNvNtCsePS3Ti1NIB9_4core3fmt5write+0x11e>
+   1256a: 001ac503     	lbu	a0, 0x1(s5)
+   1256e: 000ac683     	lbu	a3, 0x0(s5)
+   12572: 0522         	slli	a0, a0, 0x8
+   12574: 8ec9         	or	a3, a3, a0
+   12576: 0a89         	addi	s5, s5, 0x2
+   12578: 0084f513     	andi	a0, s1, 0x8
+   1257c: e121         	bnez	a0, 0x125bc <_RNvNtCsePS3Ti1NIB9_4core3fmt5write+0x126>
+   1257e: a0b9         	j	0x125cc <_RNvNtCsePS3Ti1NIB9_4core3fmt5write+0x136>
+   12580: 00264503     	lbu	a0, 0x2(a2)
+   12584: 00164583     	lbu	a1, 0x1(a2)
+   12588: 0522         	slli	a0, a0, 0x8
+   1258a: 00b56ab3     	or	s5, a0, a1
+   1258e: 00360493     	addi	s1, a2, 0x3
+   12592: 8552         	mv	a0, s4
+   12594: 85a6         	mv	a1, s1
+   12596: 8656         	mv	a2, s5
+   12598: 9b02         	jalr	s6
+   1259a: e945         	bnez	a0, 0x1264a <_RNvNtCsePS3Ti1NIB9_4core3fmt5write+0x1b4>
+   1259c: 9aa6         	add	s5, s5, s1
+   1259e: b79d         	j	0x12504 <_RNvNtCsePS3Ti1NIB9_4core3fmt5write+0x6e>
+   125a0: 001ac503     	lbu	a0, 0x1(s5)
+   125a4: 000ac603     	lbu	a2, 0x0(s5)
+   125a8: 0522         	slli	a0, a0, 0x8
+   125aa: 8e49         	or	a2, a2, a0
+   125ac: 0a89         	addi	s5, s5, 0x2
+   125ae: 0044f513     	andi	a0, s1, 0x4
+   125b2: fd45         	bnez	a0, 0x1256a <_RNvNtCsePS3Ti1NIB9_4core3fmt5write+0xd4>
+   125b4: 4681         	li	a3, 0x0
+   125b6: 0084f513     	andi	a0, s1, 0x8
+   125ba: c909         	beqz	a0, 0x125cc <_RNvNtCsePS3Ti1NIB9_4core3fmt5write+0x136>
+   125bc: 001ac503     	lbu	a0, 0x1(s5)
+   125c0: 000ac703     	lbu	a4, 0x0(s5)
+   125c4: 0522         	slli	a0, a0, 0x8
+   125c6: 00e56cb3     	or	s9, a0, a4
+   125ca: 0a89         	addi	s5, s5, 0x2
+   125cc: 0104f513     	andi	a0, s1, 0x10
+   125d0: ed15         	bnez	a0, 0x1260c <_RNvNtCsePS3Ti1NIB9_4core3fmt5write+0x176>
+   125d2: 0204f513     	andi	a0, s1, 0x20
+   125d6: c509         	beqz	a0, 0x125e0 <_RNvNtCsePS3Ti1NIB9_4core3fmt5write+0x14a>
+   125d8: 0692         	slli	a3, a3, 0x4
+   125da: 96ce         	add	a3, a3, s3
+   125dc: 0086d683     	lhu	a3, 0x8(a3)
+   125e0: 004c9513     	slli	a0, s9, 0x4
+   125e4: 00a98733     	add	a4, s3, a0
+   125e8: 6308         	ld	a0, 0x0(a4)
+   125ea: 6718         	ld	a4, 0x8(a4)
+   125ec: f9443423     	sd	s4, -0x78(s0)
+   125f0: f9243823     	sd	s2, -0x70(s0)
+   125f4: f8b42c23     	sw	a1, -0x68(s0)
+   125f8: f8c41e23     	sh	a2, -0x64(s0)
+   125fc: f8d41f23     	sh	a3, -0x62(s0)
+   12600: f8840593     	addi	a1, s0, -0x78
+   12604: 9702         	jalr	a4
+   12606: ee050ee3     	beqz	a0, 0x12502 <_RNvNtCsePS3Ti1NIB9_4core3fmt5write+0x6c>
+   1260a: a081         	j	0x1264a <_RNvNtCsePS3Ti1NIB9_4core3fmt5write+0x1b4>
+   1260c: 0612         	slli	a2, a2, 0x4
+   1260e: 964e         	add	a2, a2, s3
+   12610: 00865603     	lhu	a2, 0x8(a2)
+   12614: 0204f513     	andi	a0, s1, 0x20
+   12618: f161         	bnez	a0, 0x125d8 <_RNvNtCsePS3Ti1NIB9_4core3fmt5write+0x142>
+   1261a: b7d9         	j	0x125e0 <_RNvNtCsePS3Ti1NIB9_4core3fmt5write+0x14a>
+   1261c: 01893783     	ld	a5, 0x18(s2)
+   12620: 0019d693     	srli	a3, s3, 0x1
+   12624: 8552         	mv	a0, s4
+   12626: 85b2         	mv	a1, a2
+   12628: 8636         	mv	a2, a3
+   1262a: 70e6         	ld	ra, 0x78(sp)
+   1262c: 7446         	ld	s0, 0x70(sp)
+   1262e: 74a6         	ld	s1, 0x68(sp)
+   12630: 7906         	ld	s2, 0x60(sp)
+   12632: 69e6         	ld	s3, 0x58(sp)
+   12634: 6a46         	ld	s4, 0x50(sp)
+   12636: 6aa6         	ld	s5, 0x48(sp)
+   12638: 6b06         	ld	s6, 0x40(sp)
+   1263a: 7be2         	ld	s7, 0x38(sp)
+   1263c: 7c42         	ld	s8, 0x30(sp)
+   1263e: 7ca2         	ld	s9, 0x28(sp)
+   12640: 7d02         	ld	s10, 0x20(sp)
+   12642: 6109         	addi	sp, sp, 0x80
+   12644: 8782         	jr	a5
+   12646: 4501         	li	a0, 0x0
+   12648: a011         	j	0x1264c <_RNvNtCsePS3Ti1NIB9_4core3fmt5write+0x1b6>
+   1264a: 4505         	li	a0, 0x1
+   1264c: 70e6         	ld	ra, 0x78(sp)
+   1264e: 7446         	ld	s0, 0x70(sp)
+   12650: 74a6         	ld	s1, 0x68(sp)
+   12652: 7906         	ld	s2, 0x60(sp)
+   12654: 69e6         	ld	s3, 0x58(sp)
+   12656: 6a46         	ld	s4, 0x50(sp)
+   12658: 6aa6         	ld	s5, 0x48(sp)
+   1265a: 6b06         	ld	s6, 0x40(sp)
+   1265c: 7be2         	ld	s7, 0x38(sp)
+   1265e: 7c42         	ld	s8, 0x30(sp)
+   12660: 7ca2         	ld	s9, 0x28(sp)
+   12662: 7d02         	ld	s10, 0x20(sp)
+   12664: 6109         	addi	sp, sp, 0x80
+   12666: 8082         	ret
+
+0000000000012668 <_RNvNtCsePS3Ti1NIB9_4core6result13unwrap_failed>:
+   12668: 715d         	addi	sp, sp, -0x50
+   1266a: e486         	sd	ra, 0x48(sp)
+   1266c: e0a2         	sd	s0, 0x40(sp)
+   1266e: 0880         	addi	s0, sp, 0x50
+   12670: faa43823     	sd	a0, -0x50(s0)
+   12674: fab43c23     	sd	a1, -0x48(s0)
+   12678: fcc43023     	sd	a2, -0x40(s0)
+   1267c: fcd43423     	sd	a3, -0x38(s0)
+   12680: fb040513     	addi	a0, s0, -0x50
+
+0000000000012684 <.Lpcrel_hi521>:
+   12684: 00000597     	auipc	a1, 0x0
+   12688: fc040613     	addi	a2, s0, -0x40
+
+000000000001268c <.Lpcrel_hi522>:
+   1268c: 00000697     	auipc	a3, 0x0
+   12690: 28e58593     	addi	a1, a1, 0x28e
+   12694: 27e68693     	addi	a3, a3, 0x27e
+   12698: fca43823     	sd	a0, -0x30(s0)
+   1269c: fcb43c23     	sd	a1, -0x28(s0)
+   126a0: fec43023     	sd	a2, -0x20(s0)
+   126a4: fed43423     	sd	a3, -0x18(s0)
+
+00000000000126a8 <.Lpcrel_hi523>:
+   126a8: ffffe517     	auipc	a0, 0xffffe
+   126ac: ada50513     	addi	a0, a0, -0x526
+   126b0: fd040593     	addi	a1, s0, -0x30
+   126b4: 863a         	mv	a2, a4
+   126b6: 00000097     	auipc	ra, 0x0
+   126ba: 038080e7     	jalr	0x38(ra) <_RNvNtCsePS3Ti1NIB9_4core9panicking9panic_fmt>
+
+00000000000126be <_RNvNtCsePS3Ti1NIB9_4core9panicking18panic_nounwind_fmt>:
+/root/.rustup/toolchains/nightly-2026-05-08-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-objdump: warning: 'target/riscv64gc-unknown-none-elf/debug/os': failed to find source /rustc/f964de49bcb561e5c6c725bb37201e11d852daf0/library/core/src/panicking.rs
+   126be: 7139         	addi	sp, sp, -0x40
+   126c0: fc06         	sd	ra, 0x38(sp)
+   126c2: f822         	sd	s0, 0x30(sp)
+   126c4: 0080         	addi	s0, sp, 0x40
+/root/.rustup/toolchains/nightly-2026-05-08-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-objdump: warning: 'target/riscv64gc-unknown-none-elf/debug/os': failed to find source /rustc/f964de49bcb561e5c6c725bb37201e11d852daf0/library/core/src/intrinsics/mod.rs
+   126c6: fca43423     	sd	a0, -0x38(s0)
+   126ca: fcb43823     	sd	a1, -0x30(s0)
+   126ce: fc840513     	addi	a0, s0, -0x38
+/root/.rustup/toolchains/nightly-2026-05-08-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-objdump: warning: 'target/riscv64gc-unknown-none-elf/debug/os': failed to find source /rustc/f964de49bcb561e5c6c725bb37201e11d852daf0/library/core/src/panic/panic_info.rs
+   126d2: fca43c23     	sd	a0, -0x28(s0)
+   126d6: fed43023     	sd	a3, -0x20(s0)
+   126da: fe040423     	sb	zero, -0x18(s0)
+   126de: fec404a3     	sb	a2, -0x17(s0)
+   126e2: fd840513     	addi	a0, s0, -0x28
+   126e6: fffff097     	auipc	ra, 0xfffff
+   126ea: 6cc080e7     	jalr	0x6cc(ra) <_RNvCse9kD1uviPly_7___rustc17rust_begin_unwind>
+
+00000000000126ee <_RNvNtCsePS3Ti1NIB9_4core9panicking9panic_fmt>:
+   126ee: 7139         	addi	sp, sp, -0x40
+   126f0: fc06         	sd	ra, 0x38(sp)
+   126f2: f822         	sd	s0, 0x30(sp)
+   126f4: 0080         	addi	s0, sp, 0x40
+   126f6: fca43423     	sd	a0, -0x38(s0)
+   126fa: fcb43823     	sd	a1, -0x30(s0)
+   126fe: fc840513     	addi	a0, s0, -0x38
+   12702: 4585         	li	a1, 0x1
+   12704: fca43c23     	sd	a0, -0x28(s0)
+   12708: fec43023     	sd	a2, -0x20(s0)
+   1270c: feb41423     	sh	a1, -0x18(s0)
+   12710: fd840513     	addi	a0, s0, -0x28
+   12714: fffff097     	auipc	ra, 0xfffff
+   12718: 69e080e7     	jalr	0x69e(ra) <_RNvCse9kD1uviPly_7___rustc17rust_begin_unwind>
+
+000000000001271c <_RNvNtNtCsePS3Ti1NIB9_4core3str5count14do_count_chars>:
+   1271c: 1141         	addi	sp, sp, -0x10
+   1271e: e422         	sd	s0, 0x8(sp)
+   12720: 862a         	mv	a2, a0
+   12722: 00750693     	addi	a3, a0, 0x7
+   12726: 9ae1         	andi	a3, a3, -0x8
+   12728: 40a68333     	sub	t1, a3, a0
+/root/.rustup/toolchains/nightly-2026-05-08-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-objdump: warning: 'target/riscv64gc-unknown-none-elf/debug/os': failed to find source /rustc/f964de49bcb561e5c6c725bb37201e11d852daf0/library/core/src/slice/mod.rs
+   1272c: 0265f263     	bgeu	a1, t1, 0x12750 <_RNvNtNtCsePS3Ti1NIB9_4core3str5count14do_count_chars+0x34>
+   12730: 4501         	li	a0, 0x0
+   12732: cd81         	beqz	a1, 0x1274a <_RNvNtNtCsePS3Ti1NIB9_4core3str5count14do_count_chars+0x2e>
+   12734: 95b2         	add	a1, a1, a2
+   12736: 00060683     	lb	a3, 0x0(a2)
+   1273a: 0605         	addi	a2, a2, 0x1
+   1273c: fc06a693     	slti	a3, a3, -0x40
+   12740: 0016c693     	xori	a3, a3, 0x1
+   12744: 9536         	add	a0, a0, a3
+   12746: feb618e3     	bne	a2, a1, 0x12736 <_RNvNtNtCsePS3Ti1NIB9_4core3str5count14do_count_chars+0x1a>
+   1274a: 6422         	ld	s0, 0x8(sp)
+   1274c: 0141         	addi	sp, sp, 0x10
+   1274e: 8082         	ret
+   12750: 40658733     	sub	a4, a1, t1
+   12754: 00375393     	srli	t2, a4, 0x3
+   12758: fc038ce3     	beqz	t2, 0x12730 <_RNvNtNtCsePS3Ti1NIB9_4core3str5count14do_count_chars+0x14>
+   1275c: 9332         	add	t1, t1, a2
+   1275e: 00777813     	andi	a6, a4, 0x7
+   12762: 4501         	li	a0, 0x0
+   12764: 00c68c63     	beq	a3, a2, 0x1277c <_RNvNtNtCsePS3Ti1NIB9_4core3str5count14do_count_chars+0x60>
+   12768: 00060583     	lb	a1, 0x0(a2)
+   1276c: 0605         	addi	a2, a2, 0x1
+   1276e: fc05a593     	slti	a1, a1, -0x40
+   12772: 0015c593     	xori	a1, a1, 0x1
+   12776: 952e         	add	a0, a0, a1
+   12778: fe6618e3     	bne	a2, t1, 0x12768 <_RNvNtNtCsePS3Ti1NIB9_4core3str5count14do_count_chars+0x4c>
+   1277c: 4581         	li	a1, 0x0
+   1277e: 02080263     	beqz	a6, 0x127a2 <_RNvNtNtCsePS3Ti1NIB9_4core3str5count14do_count_chars+0x86>
+   12782: 5645         	li	a2, -0xf
+   12784: 8205         	srli	a2, a2, 0x1
+   12786: 8e79         	and	a2, a2, a4
+   12788: 96b2         	add	a3, a3, a2
+   1278a: 961a         	add	a2, a2, t1
+   1278c: 9836         	add	a6, a6, a3
+   1278e: 00060683     	lb	a3, 0x0(a2)
+   12792: 0605         	addi	a2, a2, 0x1
+   12794: fc06a693     	slti	a3, a3, -0x40
+   12798: 0016c693     	xori	a3, a3, 0x1
+   1279c: 95b6         	add	a1, a1, a3
+   1279e: ff0618e3     	bne	a2, a6, 0x1278e <_RNvNtNtCsePS3Ti1NIB9_4core3str5count14do_count_chars+0x72>
+   127a2: 01010637     	lui	a2, 0x1010
+   127a6: 00ff06b7     	lui	a3, 0xff0
+   127aa: 6741         	lui	a4, 0x10
+   127ac: 10160613     	addi	a2, a2, 0x101
+   127b0: 0ff68893     	addi	a7, a3, 0xff
+   127b4: 00170813     	addi	a6, a4, 0x1
+   127b8: 02061713     	slli	a4, a2, 0x20
+   127bc: 00e60f33     	add	t5, a2, a4
+   127c0: 02089613     	slli	a2, a7, 0x20
+   127c4: 98b2         	add	a7, a7, a2
+   127c6: 02081613     	slli	a2, a6, 0x20
+   127ca: 9832         	add	a6, a6, a2
+   127cc: 952e         	add	a0, a0, a1
+   127ce: a015         	j	0x127f2 <_RNvNtNtCsePS3Ti1NIB9_4core3str5count14do_count_chars+0xd6>
+   127d0: 9372         	add	t1, t1, t3
+   127d2: 405383b3     	sub	t2, t2, t0
+   127d6: 0032f793     	andi	a5, t0, 0x3
+   127da: 011ff5b3     	and	a1, t6, a7
+   127de: 008fd613     	srli	a2, t6, 0x8
+   127e2: 01167633     	and	a2, a2, a7
+   127e6: 95b2         	add	a1, a1, a2
+   127e8: 030585b3     	mul	a1, a1, a6
+   127ec: 91c1         	srli	a1, a1, 0x30
+   127ee: 952e         	add	a0, a0, a1
+   127f0: efad         	bnez	a5, 0x1286a <_RNvNtNtCsePS3Ti1NIB9_4core3str5count14do_count_chars+0x14e>
+   127f2: f4038ce3     	beqz	t2, 0x1274a <_RNvNtNtCsePS3Ti1NIB9_4core3str5count14do_count_chars+0x2e>
+   127f6: 8e1a         	mv	t3, t1
+   127f8: 0c000593     	li	a1, 0xc0
+   127fc: 829e         	mv	t0, t2
+   127fe: 00b3e463     	bltu	t2, a1, 0x12806 <_RNvNtNtCsePS3Ti1NIB9_4core3str5count14do_count_chars+0xea>
+   12802: 0c000293     	li	t0, 0xc0
+/root/.rustup/toolchains/nightly-2026-05-08-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-objdump: warning: 'target/riscv64gc-unknown-none-elf/debug/os': failed to find source /rustc/f964de49bcb561e5c6c725bb37201e11d852daf0/library/core/src/ptr/const_ptr.rs
+   12806: 00329313     	slli	t1, t0, 0x3
+   1280a: 4f81         	li	t6, 0x0
+/root/.rustup/toolchains/nightly-2026-05-08-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-objdump: warning: 'target/riscv64gc-unknown-none-elf/debug/os': failed to find source /rustc/f964de49bcb561e5c6c725bb37201e11d852daf0/library/core/src/ptr/mut_ptr.rs
+   1280c: 7e037793     	andi	a5, t1, 0x7e0
+   12810: d3e1         	beqz	a5, 0x127d0 <_RNvNtNtCsePS3Ti1NIB9_4core3str5count14do_count_chars+0xb4>
+   12812: 00fe0eb3     	add	t4, t3, a5
+   12816: 85f2         	mv	a1, t3
+   12818: 6194         	ld	a3, 0x0(a1)
+   1281a: 659c         	ld	a5, 0x8(a1)
+   1281c: 6998         	ld	a4, 0x10(a1)
+   1281e: 6d90         	ld	a2, 0x18(a1)
+   12820: fff6c413     	not	s0, a3
+   12824: 8299         	srli	a3, a3, 0x6
+   12826: 801d         	srli	s0, s0, 0x7
+   12828: 8ec1         	or	a3, a3, s0
+   1282a: fff7c413     	not	s0, a5
+   1282e: 8399         	srli	a5, a5, 0x6
+   12830: 801d         	srli	s0, s0, 0x7
+   12832: 8fc1         	or	a5, a5, s0
+   12834: fff74413     	not	s0, a4
+   12838: 8319         	srli	a4, a4, 0x6
+   1283a: 801d         	srli	s0, s0, 0x7
+   1283c: 8f41         	or	a4, a4, s0
+   1283e: fff64413     	not	s0, a2
+   12842: 8219         	srli	a2, a2, 0x6
+   12844: 801d         	srli	s0, s0, 0x7
+   12846: 8e41         	or	a2, a2, s0
+   12848: 01e6f6b3     	and	a3, a3, t5
+   1284c: 96fe         	add	a3, a3, t6
+   1284e: 01e7f7b3     	and	a5, a5, t5
+   12852: 01e77733     	and	a4, a4, t5
+   12856: 01e67fb3     	and	t6, a2, t5
+   1285a: 973e         	add	a4, a4, a5
+   1285c: 96ba         	add	a3, a3, a4
+   1285e: 02058593     	addi	a1, a1, 0x20
+   12862: 9fb6         	add	t6, t6, a3
+   12864: fbd59ae3     	bne	a1, t4, 0x12818 <_RNvNtNtCsePS3Ti1NIB9_4core3str5count14do_count_chars+0xfc>
+   12868: b7a5         	j	0x127d0 <_RNvNtNtCsePS3Ti1NIB9_4core3str5count14do_count_chars+0xb4>
+   1286a: 4581         	li	a1, 0x0
+   1286c: 0fc2f613     	andi	a2, t0, 0xfc
+   12870: 060e         	slli	a2, a2, 0x3
+   12872: 00ce06b3     	add	a3, t3, a2
+   12876: 00379613     	slli	a2, a5, 0x3
+   1287a: 6298         	ld	a4, 0x0(a3)
+   1287c: 06a1         	addi	a3, a3, 0x8
+   1287e: fff74793     	not	a5, a4
+   12882: 8319         	srli	a4, a4, 0x6
+   12884: 839d         	srli	a5, a5, 0x7
+   12886: 8f5d         	or	a4, a4, a5
+   12888: 01e77733     	and	a4, a4, t5
+   1288c: 1661         	addi	a2, a2, -0x8
+   1288e: 95ba         	add	a1, a1, a4
+   12890: f66d         	bnez	a2, 0x1287a <_RNvNtNtCsePS3Ti1NIB9_4core3str5count14do_count_chars+0x15e>
+   12892: 0115f633     	and	a2, a1, a7
+   12896: 81a1         	srli	a1, a1, 0x8
+   12898: 0115f5b3     	and	a1, a1, a7
+   1289c: 95b2         	add	a1, a1, a2
+   1289e: 030585b3     	mul	a1, a1, a6
+   128a2: 91c1         	srli	a1, a1, 0x30
+   128a4: 952e         	add	a0, a0, a1
+   128a6: 6422         	ld	s0, 0x8(sp)
+   128a8: 0141         	addi	sp, sp, 0x10
+   128aa: 8082         	ret
+
+00000000000128ac <_RNvNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB7_9Formatter12pad_integral12write_prefix>:
+   128ac: 7179         	addi	sp, sp, -0x30
+   128ae: f406         	sd	ra, 0x28(sp)
+   128b0: f022         	sd	s0, 0x20(sp)
+   128b2: ec26         	sd	s1, 0x18(sp)
+   128b4: e84a         	sd	s2, 0x10(sp)
+   128b6: e44e         	sd	s3, 0x8(sp)
+   128b8: e052         	sd	s4, 0x0(sp)
+   128ba: 1800         	addi	s0, sp, 0x30
+   128bc: 893a         	mv	s2, a4
+   128be: 89b6         	mv	s3, a3
+   128c0: 8a2e         	mv	s4, a1
+   128c2: 55fd         	li	a1, -0x1
+   128c4: 84aa         	mv	s1, a0
+   128c6: 00b60a63     	beq	a2, a1, 0x128da <_RNvNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB7_9Formatter12pad_integral12write_prefix+0x2e>
+   128ca: 020a3683     	ld	a3, 0x20(s4)
+   128ce: 8526         	mv	a0, s1
+   128d0: 85b2         	mv	a1, a2
+   128d2: 9682         	jalr	a3
+   128d4: c119         	beqz	a0, 0x128da <_RNvNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB7_9Formatter12pad_integral12write_prefix+0x2e>
+   128d6: 4505         	li	a0, 0x1
+   128d8: a00d         	j	0x128fa <_RNvNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB7_9Formatter12pad_integral12write_prefix+0x4e>
+   128da: 00098f63     	beqz	s3, 0x128f8 <_RNvNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB7_9Formatter12pad_integral12write_prefix+0x4c>
+   128de: 018a3783     	ld	a5, 0x18(s4)
+   128e2: 8526         	mv	a0, s1
+   128e4: 85ce         	mv	a1, s3
+   128e6: 864a         	mv	a2, s2
+   128e8: 70a2         	ld	ra, 0x28(sp)
+   128ea: 7402         	ld	s0, 0x20(sp)
+   128ec: 64e2         	ld	s1, 0x18(sp)
+   128ee: 6942         	ld	s2, 0x10(sp)
+   128f0: 69a2         	ld	s3, 0x8(sp)
+   128f2: 6a02         	ld	s4, 0x0(sp)
+   128f4: 6145         	addi	sp, sp, 0x30
+   128f6: 8782         	jr	a5
+   128f8: 4501         	li	a0, 0x0
+   128fa: 70a2         	ld	ra, 0x28(sp)
+   128fc: 7402         	ld	s0, 0x20(sp)
+   128fe: 64e2         	ld	s1, 0x18(sp)
+   12900: 6942         	ld	s2, 0x10(sp)
+   12902: 69a2         	ld	s3, 0x8(sp)
+   12904: 6a02         	ld	s4, 0x0(sp)
+   12906: 6145         	addi	sp, sp, 0x30
+   12908: 8082         	ret
+
+000000000001290a <_RNvXs1g_NtCsePS3Ti1NIB9_4core3fmtRDNtB6_5DebugEL_Bx_3fmtB8_>:
+   1290a: 6510         	ld	a2, 0x8(a0)
+   1290c: 6108         	ld	a0, 0x0(a0)
+   1290e: 6e1c         	ld	a5, 0x18(a2)
+   12910: 8782         	jr	a5
+
+0000000000012912 <_RNvXs1i_NtCsePS3Ti1NIB9_4core3fmtReNtB6_7Display3fmtB8_>:
+   12912: 6114         	ld	a3, 0x0(a0)
+   12914: 6510         	ld	a2, 0x8(a0)
+   12916: 852e         	mv	a0, a1
+   12918: 85b6         	mv	a1, a3
+   1291a: 00000317     	auipc	t1, 0x0
+   1291e: 9b430067     	jr	-0x64c(t1) <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter3pad>
+
+0000000000012922 <_RNvXsi_NtNtNtCsePS3Ti1NIB9_4core3fmt3num3impjNtB9_7Display3fmt>:
+/root/.rustup/toolchains/nightly-2026-05-08-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-objdump: warning: 'target/riscv64gc-unknown-none-elf/debug/os': failed to find source /rustc/f964de49bcb561e5c6c725bb37201e11d852daf0/library/core/src/fmt/num.rs
+   12922: 7179         	addi	sp, sp, -0x30
+   12924: f406         	sd	ra, 0x28(sp)
+   12926: f022         	sd	s0, 0x20(sp)
+   12928: ec26         	sd	s1, 0x18(sp)
+   1292a: 1800         	addi	s0, sp, 0x30
+   1292c: 882e         	mv	a6, a1
+   1292e: 00053883     	ld	a7, 0x0(a0)
+   12932: 3e800593     	li	a1, 0x3e8
+
+0000000000012936 <.Lpcrel_hi1291>:
+   12936: ffffe517     	auipc	a0, 0xffffe
+   1293a: d8a50f13     	addi	t5, a0, -0x276
+   1293e: 08b8ea63     	bltu	a7, a1, 0x129d2 <.Lpcrel_hi1292+0x8a>
+   12942: 5731         	li	a4, -0x14
+   12944: fe740793     	addi	a5, s0, -0x19
+
+0000000000012948 <.Lpcrel_hi1292>:
+   12948: ffffe597     	auipc	a1, 0xffffe
+   1294c: 6609         	lui	a2, 0x2
+   1294e: 6685         	lui	a3, 0x1
+   12950: d705b283     	ld	t0, -0x290(a1)
+   12954: 71060393     	addi	t2, a2, 0x710
+   12958: 47b68e13     	addi	t3, a3, 0x47b
+   1295c: 06400313     	li	t1, 0x64
+   12960: 009895b7     	lui	a1, 0x989
+   12964: 67f58e93     	addi	t4, a1, 0x67f
+   12968: 8fc6         	mv	t6, a7
+   1296a: 86fe         	mv	a3, t6
+   1296c: 025fb533     	mulhu	a0, t6, t0
+   12970: 0711         	addi	a4, a4, 0x4
+   12972: 00b55f93     	srli	t6, a0, 0xb
+   12976: 027f85b3     	mul	a1, t6, t2
+   1297a: 40b68633     	sub	a2, a3, a1
+   1297e: 03061593     	slli	a1, a2, 0x30
+   12982: 91c9         	srli	a1, a1, 0x32
+   12984: 03c585b3     	mul	a1, a1, t3
+   12988: 0105d513     	srli	a0, a1, 0x10
+   1298c: 81c5         	srli	a1, a1, 0x11
+   1298e: 026585b3     	mul	a1, a1, t1
+   12992: 7fe57513     	andi	a0, a0, 0x7fe
+   12996: 8e0d         	sub	a2, a2, a1
+   12998: 957a         	add	a0, a0, t5
+   1299a: 1646         	slli	a2, a2, 0x31
+   1299c: 9241         	srli	a2, a2, 0x30
+   1299e: 967a         	add	a2, a2, t5
+   129a0: 00054583     	lbu	a1, 0x0(a0)
+   129a4: 00154503     	lbu	a0, 0x1(a0)
+   129a8: 00064483     	lbu	s1, 0x0(a2)
+   129ac: 00164603     	lbu	a2, 0x1(a2)
+/root/.rustup/toolchains/nightly-2026-05-08-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-objdump: warning: 'target/riscv64gc-unknown-none-elf/debug/os': failed to find source /rustc/f964de49bcb561e5c6c725bb37201e11d852daf0/library/core/src/mem/maybe_uninit.rs
+   129b0: feb78ea3     	sb	a1, -0x3(a5)
+   129b4: fea78f23     	sb	a0, -0x2(a5)
+   129b8: fe978fa3     	sb	s1, -0x1(a5)
+   129bc: 00c78023     	sb	a2, 0x0(a5)
+   129c0: 17f1         	addi	a5, a5, -0x4
+   129c2: fadee4e3     	bltu	t4, a3, 0x1296a <.Lpcrel_hi1292+0x22>
+   129c6: 40e00733     	neg	a4, a4
+   129ca: 45a5         	li	a1, 0x9
+   129cc: 01f5e863     	bltu	a1, t6, 0x129dc <.Lpcrel_hi1292+0x94>
+   129d0: a0b9         	j	0x12a1e <.Lpcrel_hi1292+0xd6>
+   129d2: 4751         	li	a4, 0x14
+   129d4: 8fc6         	mv	t6, a7
+   129d6: 45a5         	li	a1, 0x9
+   129d8: 0515f363     	bgeu	a1, a7, 0x12a1e <.Lpcrel_hi1292+0xd6>
+   129dc: 030f9513     	slli	a0, t6, 0x30
+   129e0: 6585         	lui	a1, 0x1
+   129e2: 06400613     	li	a2, 0x64
+   129e6: fd440693     	addi	a3, s0, -0x2c
+   129ea: 9149         	srli	a0, a0, 0x32
+   129ec: 47b58593     	addi	a1, a1, 0x47b
+   129f0: 00e687b3     	add	a5, a3, a4
+   129f4: 02b50533     	mul	a0, a0, a1
+   129f8: 8145         	srli	a0, a0, 0x11
+   129fa: 02c505b3     	mul	a1, a0, a2
+   129fe: 40bf85b3     	sub	a1, t6, a1
+   12a02: 15c6         	slli	a1, a1, 0x31
+   12a04: 91c1         	srli	a1, a1, 0x30
+   12a06: 95fa         	add	a1, a1, t5
+   12a08: 0005c603     	lbu	a2, 0x0(a1)
+   12a0c: 0015c583     	lbu	a1, 0x1(a1)
+   12a10: 1779         	addi	a4, a4, -0x2
+   12a12: 96ba         	add	a3, a3, a4
+   12a14: 00c68023     	sb	a2, 0x0(a3)
+   12a18: feb78fa3     	sb	a1, -0x1(a5)
+   12a1c: 8faa         	mv	t6, a0
+   12a1e: 00088463     	beqz	a7, 0x12a26 <.Lpcrel_hi1292+0xde>
+   12a22: 000f8c63     	beqz	t6, 0x12a3a <.Lpcrel_hi1292+0xf2>
+   12a26: 0f86         	slli	t6, t6, 0x1
+   12a28: 9f7e         	add	t5, t5, t6
+   12a2a: 001f4503     	lbu	a0, 0x1(t5)
+   12a2e: 177d         	addi	a4, a4, -0x1
+   12a30: fd440593     	addi	a1, s0, -0x2c
+   12a34: 95ba         	add	a1, a1, a4
+   12a36: 00a58023     	sb	a0, 0x0(a1)
+   12a3a: 47d1         	li	a5, 0x14
+   12a3c: fd440513     	addi	a0, s0, -0x2c
+/root/.rustup/toolchains/nightly-2026-05-08-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-objdump: warning: 'target/riscv64gc-unknown-none-elf/debug/os': failed to find source /rustc/f964de49bcb561e5c6c725bb37201e11d852daf0/library/core/src/slice/index.rs
+   12a40: 8f99         	sub	a5, a5, a4
+   12a42: 972a         	add	a4, a4, a0
+   12a44: 4585         	li	a1, 0x1
+   12a46: 4605         	li	a2, 0x1
+   12a48: 8542         	mv	a0, a6
+   12a4a: 4681         	li	a3, 0x0
+   12a4c: fffff097     	auipc	ra, 0xfffff
+   12a50: 63c080e7     	jalr	0x63c(ra) <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral>
+   12a54: 70a2         	ld	ra, 0x28(sp)
+   12a56: 7402         	ld	s0, 0x20(sp)
+   12a58: 64e2         	ld	s1, 0x18(sp)
+   12a5a: 6145         	addi	sp, sp, 0x30
+   12a5c: 8082         	ret
+
+0000000000012a5e <_RNvXsw_NtNtCsePS3Ti1NIB9_4core3fmt3nummNtB7_8UpperHex3fmt>:
+   12a5e: 1101         	addi	sp, sp, -0x20
+   12a60: ec06         	sd	ra, 0x18(sp)
+   12a62: e822         	sd	s0, 0x10(sp)
+   12a64: 1000         	addi	s0, sp, 0x20
+   12a66: 882e         	mv	a6, a1
+   12a68: 4781         	li	a5, 0x0
+   12a6a: 4110         	lw	a2, 0x0(a0)
+   12a6c: fef40513     	addi	a0, s0, -0x11
+
+0000000000012a70 <.Lpcrel_hi1376>:
+   12a70: ffffe597     	auipc	a1, 0xffffe
+   12a74: 9b858593     	addi	a1, a1, -0x648
+   12a78: 00f67693     	andi	a3, a2, 0xf
+   12a7c: 96ae         	add	a3, a3, a1
+   12a7e: 0006c683     	lbu	a3, 0x0(a3)
+   12a82: 0046571b     	srliw	a4, a2, 0x4
+   12a86: 0785         	addi	a5, a5, 0x1
+   12a88: 00d50023     	sb	a3, 0x0(a0)
+   12a8c: 157d         	addi	a0, a0, -0x1
+   12a8e: 863a         	mv	a2, a4
+   12a90: f765         	bnez	a4, 0x12a78 <.Lpcrel_hi1376+0x8>
+   12a92: fe840513     	addi	a0, s0, -0x18
+   12a96: 8d1d         	sub	a0, a0, a5
+   12a98: 00850713     	addi	a4, a0, 0x8
+
+0000000000012a9c <.Lpcrel_hi1377>:
+   12a9c: ffffe517     	auipc	a0, 0xffffe
+   12aa0: 4585         	li	a1, 0x1
+   12aa2: cec50613     	addi	a2, a0, -0x314
+   12aa6: 4689         	li	a3, 0x2
+   12aa8: 8542         	mv	a0, a6
+   12aaa: fffff097     	auipc	ra, 0xfffff
+   12aae: 5de080e7     	jalr	0x5de(ra) <_RNvMsa_NtCsePS3Ti1NIB9_4core3fmtNtB5_9Formatter12pad_integral>
+   12ab2: 60e2         	ld	ra, 0x18(sp)
+   12ab4: 6442         	ld	s0, 0x10(sp)
+   12ab6: 6105         	addi	sp, sp, 0x20
+   12ab8: 8082         	ret

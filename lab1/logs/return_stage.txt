@@ -1,0 +1,9 @@
+
+$ cargo build --color never 
+   Compiling os v0.1.0 (/mnt/lab1/target/return)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.41s
+
+$ timeout 2s qemu-riscv64 target/riscv64gc-unknown-none-elf/debug/os
+timeout: the monitored command dumped core
+/mnt/lab1/verify.sh: line 68:  1281 Segmentation fault      timeout 2s qemu-riscv64 target/riscv64gc-unknown-none-elf/debug/os
+Observed status: 139 (139 means SIGSEGV)
