@@ -1,10 +1,10 @@
 
 $ cargo build --color never 
    Compiling os v0.1.0 (/mnt/lab1/target/standard)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.96s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.20s
 
 $ cargo run --color never 
    Compiling os v0.1.0 (/mnt/lab1/target/standard)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.89s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.97s
      Running `target/debug/os`
 Hello, world!

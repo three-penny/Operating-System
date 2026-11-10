@@ -1,7 +1,7 @@
 
 $ cargo build --color never 
    Compiling os v0.1.0 (/mnt/lab1/target/formatting)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.64s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.95s
 
 $ qemu-riscv64 target/riscv64gc-unknown-none-elf/debug/os
 value=42 hex=2a
