@@ -4,6 +4,27 @@
 
 本仓库包含实验 0 的环境配置记录，以及实验 1 的 RISC-V 无标准库可执行程序和各阶段验证材料。
 
+## 实验分支导航
+
+| 分支 | 用途 | 当前状态 |
+| --- | --- | --- |
+| `master` | 仓库总览、稳定入口和分支使用说明 | 当前源码仍对应实验一；后续实验在各自分支开发 |
+| [`lab1`](https://github.com/three-penny/Operating-System/tree/lab1) | 实验一 独立的可执行程序 | 已完成，保留全部8次阶段与验证提交 |
+| [`lab2`](https://github.com/three-penny/Operating-System/tree/lab2) | 实验二 | 待开展，暂以实验一完成版本初始化 |
+| [`lab3`](https://github.com/three-penny/Operating-System/tree/lab3) | 实验三 | 待开展，暂以实验一完成版本初始化 |
+
+实验一完成版本标签为 [`lab1-v1.0`](https://github.com/three-penny/Operating-System/releases/tag/lab1-v1.0)，对应提交 `162fcca5091c2e46f5f6c48d04907da41c3c4a47`。标签用于准确复现该次提交；`lab2`、`lab3` 目前尚未实现对应实验。
+
+单独拉取实验一，并保留完整Git历史：
+
+```bash
+git clone --branch lab1 https://github.com/three-penny/Operating-System.git GardenerOS-lab1
+cd GardenerOS-lab1
+git log --format=fuller --stat
+```
+
+在现有仓库切换实验：先用 `git status --short` 确认没有未提交修改，再执行 `git fetch origin`、`git switch lab2` 和 `git pull --ff-only`。实验三如需承接实验二，应在实验二完成且实验三尚未开始修改时快进合入实验二；完整操作见 [BRANCHES.md](BRANCHES.md)。
+
 ## 实验环境
 
 - Windows 主机通过 Docker Desktop 运行 openEuler 24.03 LTS SP4。
