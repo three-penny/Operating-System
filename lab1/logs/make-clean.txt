@@ -1,0 +1,30 @@
+$ cd /mnt && make build && make clean && make -C os clean
+2026-11-16T07:32:09+00:00
+cd "/mnt/os" && cargo build --color never
+   Compiling os v0.1.0 (/mnt/os)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.53s
+bash "/mnt/lab1/clean.sh"
+$ cargo clean --manifest-path os/Cargo.toml --target-dir os/target
+     Removed 28 files, 1.7MiB total
+$ rm -rf -- lab1/target
+$ rm -rf -- target
+PASS: os/target is absent
+PASS: lab1/target is absent
+PASS: target is absent
+CLEAN CHECK PASSED: source files and Git history are preserved.
+make: Entering directory '/mnt/os'
+make -C .. clean
+make[1]: Entering directory '/mnt'
+bash "/mnt/lab1/clean.sh"
+$ cargo clean --manifest-path os/Cargo.toml --target-dir os/target
+     Removed 0 files
+$ rm -rf -- lab1/target
+$ rm -rf -- target
+PASS: os/target is absent
+PASS: lab1/target is absent
+PASS: target is absent
+CLEAN CHECK PASSED: source files and Git history are preserved.
+make[1]: Leaving directory '/mnt'
+make: Leaving directory '/mnt/os'
+SUBMISSION CLEAN CHECK PASSED
+Command exit status: 0

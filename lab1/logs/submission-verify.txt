@@ -1,0 +1,222 @@
+Validation time: 2026-11-16T15:26:17.9407629+08:00 $ make build; make run; make verify
+GNU Make 4.4.1
+cd "/mnt/os" && cargo build --color never
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.19s
+cd "/mnt/os" && cargo build --color never
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.08s
+cd "/mnt/os" && qemu-riscv64 target/riscv64gc-unknown-none-elf/debug/os
+Hello, world!
+bash "/mnt/lab1/verify.sh" all
+
+=== environment ===
+
+$ cat /etc/os-release 
+NAME="openEuler"
+VERSION="24.03 (LTS-SP4)"
+ID="openEuler"
+VERSION_ID="24.03"
+PRETTY_NAME="openEuler 24.03 (LTS-SP4)"
+ANSI_COLOR="0;31"
+
+
+$ rustc --version 
+rustc 1.97.0-nightly (f964de49b 2026-05-07)
+
+$ cargo --version 
+cargo 1.97.0-nightly (4f9b52075 2026-05-01)
+
+$ rustup target list --installed 
+riscv64gc-unknown-none-elf
+x86_64-unknown-linux-gnu
+
+$ rustup component list --installed 
+cargo-x86_64-unknown-linux-gnu
+clippy-x86_64-unknown-linux-gnu
+llvm-tools-x86_64-unknown-linux-gnu
+rust-docs-x86_64-unknown-linux-gnu
+rust-src
+rust-std-riscv64gc-unknown-none-elf
+rust-std-x86_64-unknown-linux-gnu
+rustc-x86_64-unknown-linux-gnu
+rustfmt-x86_64-unknown-linux-gnu
+
+$ qemu-system-riscv64 --version 
+QEMU emulator version 11.0.0
+Copyright (c) 2003-2026 Fabrice Bellard and the QEMU Project developers
+
+$ qemu-riscv64 --version 
+qemu-riscv64 version 11.0.0
+Copyright (c) 2003-2026 Fabrice Bellard and the QEMU Project developers
+
+=== standard ===
+
+$ cargo build --color never 
+   Compiling os v0.1.0 (/mnt/lab1/target/standard)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.03s
+
+$ cargo run --color never 
+   Compiling os v0.1.0 (/mnt/lab1/target/standard)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.72s
+     Running `target/debug/os`
+Hello, world!
+
+=== no_entry ===
+
+$ cargo build --color never 
+   Compiling os v0.1.0 (/mnt/lab1/target/no-entry)
+warning: linker stderr: rust-lld: cannot find entry symbol _start; not setting start address
+  |
+  = note: `#[warn(linker_messages)]` on by default
+
+warning: `os` (bin "os") generated 1 warning
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.45s
+
+$ file target/riscv64gc-unknown-none-elf/debug/os 
+target/riscv64gc-unknown-none-elf/debug/os: ELF 64-bit LSB executable, UCB RISC-V, RVC, double-float ABI, version 1 (SYSV), statically linked, with debug_info, not stripped
+
+$ rust-readobj -h target/riscv64gc-unknown-none-elf/debug/os 
+
+File: target/riscv64gc-unknown-none-elf/debug/os
+Format: elf64-littleriscv
+Arch: riscv64
+AddressSize: 64bit
+LoadName: <Not found>
+ElfHeader {
+  Ident {
+    Magic: (7F 45 4C 46)
+    Class: 64-bit (0x2)
+    DataEncoding: LittleEndian (0x1)
+    FileVersion: 1
+    OS/ABI: SystemV (0x0)
+    ABIVersion: 0
+    Unused: (00 00 00 00 00 00 00)
+  }
+  Type: Executable (0x2)
+  Machine: EM_RISCV (0xF3)
+  Version: 1
+  Entry: 0x0
+  ProgramHeaderOffset: 0x40
+  SectionHeaderOffset: 0xEA0
+  Flags [ (0x5)
+    EF_RISCV_FLOAT_ABI_DOUBLE (0x4)
+    EF_RISCV_RVC (0x1)
+  ]
+  HeaderSize: 64
+  ProgramHeaderEntrySize: 56
+  ProgramHeaderCount: 4
+  SectionHeaderEntrySize: 64
+  SectionHeaderCount: 12
+  StringTableSectionIndex: 10
+}
+
+$ rust-objdump -S target/riscv64gc-unknown-none-elf/debug/os 
+
+target/riscv64gc-unknown-none-elf/debug/os:	file format elf64-littleriscv
+
+$ rust-size target/riscv64gc-unknown-none-elf/debug/os 
+   text	   data	    bss	    dec	    hex	filename
+      0	      0	      0	      0	      0	target/riscv64gc-unknown-none-elf/debug/os
+
+=== loop_stage ===
+
+$ cargo build --color never 
+   Compiling os v0.1.0 (/mnt/lab1/target/loop)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.43s
+
+$ timeout 2s qemu-riscv64 target/riscv64gc-unknown-none-elf/debug/os
+Observed status: 124 (124 means timeout stopped the infinite loop)
+
+=== return_stage ===
+
+$ cargo build --color never 
+   Compiling os v0.1.0 (/mnt/lab1/target/return)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.40s
+
+$ timeout 2s qemu-riscv64 target/riscv64gc-unknown-none-elf/debug/os
+timeout: the monitored command dumped core
+/mnt/lab1/verify.sh: line 68:   486 Segmentation fault      timeout 2s qemu-riscv64 target/riscv64gc-unknown-none-elf/debug/os
+Observed status: 139 (139 means SIGSEGV)
+
+=== exit_stage ===
+
+$ cargo build --color never 
+   Compiling os v0.1.0 (/mnt/lab1/target/exit9)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.38s
+
+$ qemu-riscv64 target/riscv64gc-unknown-none-elf/debug/os
+Observed exit status: 9
+
+=== final_stage ===
+
+$ cargo build --color never 
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.08s
+
+$ file target/riscv64gc-unknown-none-elf/debug/os 
+target/riscv64gc-unknown-none-elf/debug/os: ELF 64-bit LSB executable, UCB RISC-V, RVC, double-float ABI, version 1 (SYSV), statically linked, with debug_info, not stripped
+
+$ rust-readobj -h target/riscv64gc-unknown-none-elf/debug/os 
+
+File: target/riscv64gc-unknown-none-elf/debug/os
+Format: elf64-littleriscv
+Arch: riscv64
+AddressSize: 64bit
+LoadName: <Not found>
+ElfHeader {
+  Ident {
+    Magic: (7F 45 4C 46)
+    Class: 64-bit (0x2)
+    DataEncoding: LittleEndian (0x1)
+    FileVersion: 1
+    OS/ABI: SystemV (0x0)
+    ABIVersion: 0
+    Unused: (00 00 00 00 00 00 00)
+  }
+  Type: Executable (0x2)
+  Machine: EM_RISCV (0xF3)
+  Version: 1
+  Entry: 0x11DDA
+  ProgramHeaderOffset: 0x40
+  SectionHeaderOffset: 0xB3478
+  Flags [ (0x5)
+    EF_RISCV_FLOAT_ABI_DOUBLE (0x4)
+    EF_RISCV_RVC (0x1)
+  ]
+  HeaderSize: 64
+  ProgramHeaderEntrySize: 56
+  ProgramHeaderCount: 5
+  SectionHeaderEntrySize: 64
+  SectionHeaderCount: 17
+  StringTableSectionIndex: 15
+}
+
+$ rust-objdump -d --disassemble-symbols=_start target/riscv64gc-unknown-none-elf/debug/os 
+
+target/riscv64gc-unknown-none-elf/debug/os:	file format elf64-littleriscv
+
+Disassembly of section .text:
+
+0000000000011dda <_start>:
+   11dda: 1141         	addi	sp, sp, -0x10
+   11ddc: e406         	sd	ra, 0x8(sp)
+
+$ qemu-riscv64 target/riscv64gc-unknown-none-elf/debug/os
+Hello, world!
+Observed exit status: 0
+
+$ qemu-riscv64 -strace target/riscv64gc-unknown-none-elf/debug/os
+622 write(1,0x103fb,14)Hello, world!
+ = 14
+622 exit(0)
+
+=== formatting ===
+
+$ cargo build --color never 
+   Compiling os v0.1.0 (/mnt/lab1/target/formatting)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.56s
+
+$ qemu-riscv64 target/riscv64gc-unknown-none-elf/debug/os
+value=42 hex=2a
+
+
+ALL EXPERIMENT CHECKS PASSED
+Command exit status: 0

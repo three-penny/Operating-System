@@ -1,6 +1,6 @@
 
 $ cargo build --color never 
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.19s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.08s
 
 $ file target/riscv64gc-unknown-none-elf/debug/os 
 target/riscv64gc-unknown-none-elf/debug/os: ELF 64-bit LSB executable, UCB RISC-V, RVC, double-float ABI, version 1 (SYSV), statically linked, with debug_info, not stripped
@@ -55,6 +55,6 @@ Hello, world!
 Observed exit status: 0
 
 $ qemu-riscv64 -strace target/riscv64gc-unknown-none-elf/debug/os
-597 write(1,0x103fb,14)Hello, world!
+622 write(1,0x103fb,14)Hello, world!
  = 14
-597 exit(0)
+622 exit(0)

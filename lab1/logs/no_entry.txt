@@ -6,7 +6,7 @@ warning: linker stderr: rust-lld: cannot find entry symbol _start; not setting s
   = note: `#[warn(linker_messages)]` on by default
 
 warning: `os` (bin "os") generated 1 warning
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.62s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.45s
 
 $ file target/riscv64gc-unknown-none-elf/debug/os 
 target/riscv64gc-unknown-none-elf/debug/os: ELF 64-bit LSB executable, UCB RISC-V, RVC, double-float ABI, version 1 (SYSV), statically linked, with debug_info, not stripped
