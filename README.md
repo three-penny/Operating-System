@@ -13,7 +13,7 @@
 | [`lab2`](https://github.com/three-penny/Operating-System/tree/lab2) | 实验二 | 待开展，暂以实验一完成版本初始化 |
 | [`lab3`](https://github.com/three-penny/Operating-System/tree/lab3) | 实验三 | 待开展，暂以实验一完成版本初始化 |
 
-实验一完成版本标签为 [`lab1-v1.0`](https://github.com/three-penny/Operating-System/releases/tag/lab1-v1.0)，对应提交 `162fcca5091c2e46f5f6c48d04907da41c3c4a47`。标签用于准确复现该次提交；`lab2`、`lab3` 目前尚未实现对应实验。
+实验一完成版本标签为 [`lab1-v1.0`](https://github.com/three-penny/Operating-System/tree/lab1-v1.0)，对应提交 `162fcca5091c2e46f5f6c48d04907da41c3c4a47`。标签用于准确复现该次提交；`lab2`、`lab3` 目前尚未实现对应实验。
 
 单独拉取实验一，并保留完整Git历史：
 
