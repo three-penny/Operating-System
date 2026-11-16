@@ -74,3 +74,20 @@ registry = "sparse+https://mirrors.tuna.tsinghua.edu.cn/crates.io-index/"
 最终程序不依赖 `std`、libc 或常规 Rust 程序入口，但仍使用 `core` 和 Linux 系统调用 ABI。`qemu-riscv64` 为它提供 Linux 用户态执行环境，因此它还不是可通过 `qemu-system-riscv64` 直接启动的操作系统内核。
 
 实验材料中的 Windows 路径与容器路径只对应本次环境；在其他电脑上应按实际位置重新挂载。
+
+## Make 构建与提交前清理
+
+在已配置好的 openEuler 容器中执行：
+
+```bash
+source /root/.cargo/env
+cd /mnt
+make build
+make run
+make verify
+make clean
+```
+
+`make clean` 通过 Cargo 清理最终程序的 `os/target/`，并移除阶段验证产生的 `lab1/target/` 和根目录 `target/`。清理过程会检查目录边界，保留源码、Cargo.lock、日志、截图和 `.git/`；也支持进入 `os/` 后执行 `make clean`。清理后如需运行，应重新执行 `make build`。
+
+提交的源码必须为清理后的版本，不能包含 target 目录、编译出的 ELF、对象文件或 core dump。Git 历史应同时保留；普通 GitHub Download ZIP 或 `git archive` 不包含 `.git/`，因此不能单独作为带 Git 记录的提交材料。
