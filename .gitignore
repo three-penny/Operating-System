@@ -1,2 +1,4 @@
 /target/
 **/target/
+bootloader/
+opensbi-*-rv-bin/

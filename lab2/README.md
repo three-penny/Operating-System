@@ -13,7 +13,7 @@ source /root/.cargo/env
 cd /mnt
 ```
 
-请把老师提供的 `opensbi.bin` 放在仓库根目录的 `bootloader/opensbi.bin`。仓库不分发固件，避免使用与课程环境不一致的版本。需要 Rust 的 `riscv64gc-unknown-none-elf` target、`rust-objcopy`/`rust-readobj`（由 cargo-binutils 提供）以及 `qemu-system-riscv64`。
+请优先使用老师提供的 `opensbi.bin`，放在仓库根目录的 `bootloader/opensbi.bin`。本次未取得课程固件，因此用 OpenSBI 官方 v1.9 generic `fw_jump.bin` 完成验证；来源和 SHA-256 记录于 `lab2/logs/opensbi-source.txt`。如课程固件与此版本不同，应换成老师版本并重新执行验证。仓库不分发固件。需要 Rust 的 `riscv64gc-unknown-none-elf` target、`rust-objcopy`/`rust-readobj`（由 cargo-binutils 提供）以及 `qemu-system-riscv64`。
 
 ## 构建与运行
 

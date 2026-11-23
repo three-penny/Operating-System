@@ -1,0 +1,6 @@
+来源：https://github.com/riscv-software-src/opensbi/releases/tag/v1.9
+资产：opensbi-1.9-rv-bin.tar.xz
+平台固件：share/opensbi/lp64/generic/firmware/fw_jump.bin
+本地路径：bootloader/opensbi.bin
+SHA-256：F163979C8D0970C7841CB0E78F61FA68568CD7DB2D454014DB58656C45C1388E
+说明：课程文档要求优先使用老师提供的 opensbi.bin；本次因用户未提供课程固件，使用 OpenSBI 官方 v1.9 generic fw_jump.bin 完成验证。
