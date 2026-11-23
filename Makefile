@@ -1,15 +1,17 @@
 # Run in the configured Linux container after loading ~/.cargo/env.
 SHELL := /bin/bash
 ROOT := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
-.DEFAULT_GOAL := help
-.PHONY: help build run verify clean
+.DEFAULT_GOAL := build
+.PHONY: help build run verify clean env
 help:
-	@printf '%s\n' 'make build  - build the final RISC-V program' 'make run    - build and run the final program' 'make verify - verify all experiment stages' 'make clean  - remove generated build directories, keep sources/logs/.git'
+	@printf '%s\n' 'make build  - build Experiment 2 kernel and raw image' 'make run    - build and run with OpenSBI' 'make verify - verify ELF and QEMU output' 'make clean  - remove generated build files' 'make env    - prepare the Rust target and tools'
+env:
+	$(MAKE) -C "$(ROOT)/os" env
 build:
-	cd "$(ROOT)/os" && cargo build --color never
+	$(MAKE) -C "$(ROOT)/os" build
 run: build
-	cd "$(ROOT)/os" && qemu-riscv64 target/riscv64gc-unknown-none-elf/debug/os
+	$(MAKE) -C "$(ROOT)/os" run
 verify:
-	bash "$(ROOT)/lab1/verify.sh" all
+	$(MAKE) -C "$(ROOT)/os" verify
 clean:
-	bash "$(ROOT)/lab1/clean.sh"
+	$(MAKE) -C "$(ROOT)/os" clean
