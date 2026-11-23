@@ -55,4 +55,4 @@ git log --graph --oneline --decorate lab2
 git log --format=fuller --stat lab2
 ```
 
-固定版本标签为 `lab2-v1.0`。清理构建文件不会改变源码或 Git 历史。
+固定版本标签为 `lab2-v1.0`，指向包含最终报告和真实 QEMU 验证日志的提交。清理构建文件不会改变源码或 Git 历史。
