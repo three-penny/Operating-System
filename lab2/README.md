@@ -48,11 +48,11 @@ qemu-system-riscv64 -machine virt -nographic -bios ../bootloader/opensbi.bin -de
 
 ## 报告与 Git
 
-实验报告位于 `lab2/report/24301048_余欣泽_实验2_裸机执行环境与最小化内核.docx`。本实验使用独立的 `lab2` 分支，起点为实验一固定提交；功能按启动布局、SBI 与异常处理、运行材料和报告分成多次提交。查看完整树：
+实验报告保存在本地 `lab2/report/` 目录，不纳入 Git 仓库。本实验使用独立的 `lab2` 分支，起点为实验一固定提交；功能按启动布局、SBI 与异常处理、运行材料分成多次提交。查看完整树：
 
 ```bash
 git log --graph --oneline --decorate lab2
 git log --format=fuller --stat lab2
 ```
 
-固定版本标签为 `lab2-v1.0`，指向包含最终报告和真实 QEMU 验证日志的提交。清理构建文件不会改变源码或 Git 历史。
+固定版本标签为 `lab2-v1.0`，用于标记实验二的代码和真实 QEMU 验证日志。清理构建文件不会改变源码或 Git 历史。

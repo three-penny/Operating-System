@@ -2,3 +2,4 @@
 **/target/
 bootloader/
 opensbi-*-rv-bin/
+/lab2/report/
