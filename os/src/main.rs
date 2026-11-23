@@ -1,74 +1,52 @@
 #![no_std]
 #![no_main]
 
-use core::arch::asm;
-use core::fmt::{self, Write};
-use core::panic::PanicInfo;
+#[macro_use]
+mod console;
+mod lang_items;
+mod sbi;
 
-const SYSCALL_WRITE: usize = 64;
-const SYSCALL_EXIT: usize = 93;
+use core::arch::global_asm;
 
-fn syscall(id: usize, args: [usize; 3]) -> isize {
-    let ret: isize;
-    unsafe {
-        asm!(
-            "ecall",
-            inlateout("a0") args[0] => ret,
-            in("a1") args[1],
-            in("a2") args[2],
-            in("a7") id,
-            options(nostack)
-        );
+global_asm!(include_str!("entry.asm"));
+
+fn clear_bss() {
+    extern "C" {
+        fn sbss();
+        fn ebss();
     }
-    ret
-}
-
-fn sys_write(fd: usize, buffer: &[u8]) -> isize {
-    syscall(SYSCALL_WRITE, [fd, buffer.as_ptr() as usize, buffer.len()])
-}
-
-fn sys_exit(status: i32) -> isize {
-    syscall(SYSCALL_EXIT, [status as usize, 0, 0])
-}
-
-struct Stdout;
-
-impl Write for Stdout {
-    fn write_str(&mut self, s: &str) -> fmt::Result {
-        let _ = sys_write(1, s.as_bytes());
-        Ok(())
+    let start = sbss as *const () as usize;
+    let end = ebss as *const () as usize;
+    for addr in start..end {
+        unsafe { (addr as *mut u8).write_volatile(0) };
     }
-}
-
-fn print(args: fmt::Arguments<'_>) {
-    Stdout.write_fmt(args).unwrap();
-}
-
-#[macro_export]
-macro_rules! print {
-    ($($arg:tt)*) => {
-        $crate::print(format_args!($($arg)*))
-    };
-}
-
-#[macro_export]
-macro_rules! println {
-    () => {
-        $crate::print!("\n")
-    };
-    ($fmt:expr $(, $($arg:tt)*)?) => {
-        $crate::print!(concat!($fmt, "\n") $(, $($arg)*)?)
-    };
-}
-
-#[panic_handler]
-fn panic(_info: &PanicInfo) -> ! {
-    loop {}
 }
 
 #[unsafe(no_mangle)]
-extern "C" fn _start() -> ! {
+pub extern "C" fn rust_main() -> ! {
+    extern "C" {
+        fn stext();
+        fn etext();
+        fn srodata();
+        fn erodata();
+        fn sdata();
+        fn edata();
+        fn sbss();
+        fn ebss();
+        fn boot_stack();
+        fn boot_stack_top();
+    }
+
+    clear_bss();
+    println!(".text [{:#x}, {:#x})", stext as *const () as usize, etext as *const () as usize);
+    println!(".rodata [{:#x}, {:#x})", srodata as *const () as usize, erodata as *const () as usize);
+    println!(".data [{:#x}, {:#x})", sdata as *const () as usize, edata as *const () as usize);
+    println!(
+        "boot_stack [{:#x}, {:#x})",
+        boot_stack as *const () as usize,
+        boot_stack_top as *const () as usize
+    );
+    println!(".bss [{:#x}, {:#x})", sbss as *const () as usize, ebss as *const () as usize);
     println!("Hello, world!");
-    let _ = sys_exit(0);
-    loop {}
+    panic!("Shutdown machine!");
 }
